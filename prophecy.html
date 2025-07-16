@@ -30,52 +30,189 @@
     <main class="container mx-auto py-16 px-4">
         <h1 class="text-4xl font-bold text-red-500 mb-8 text-center">Prophecy Tracker: Key Milestones</h1>
 
+        <!-- Progress Overview -->
+        <div class="bg-gray-800 p-8 rounded-lg mb-12">
+            <h2 class="text-2xl font-bold text-red-400 mb-6 text-center">Overall Progress</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">✓</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-100">Red Heifers</h3>
+                    <p class="text-sm text-gray-400">Born & Transported</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-100">Temple Prep</h3>
+                    <p class="text-sm text-gray-400">In Progress</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">⏳</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-100">Political Alignment</h3>
+                    <p class="text-sm text-gray-400">Developing</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-2xl">○</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-100">Ceremony</h3>
+                    <p class="text-sm text-gray-400">Awaiting</p>
+                </div>
+            </div>
+            <div class="mt-8">
+                <div class="w-full bg-gray-700 rounded-full h-3">
+                    <div class="bg-gradient-to-r from-green-500 to-yellow-500 h-3 rounded-full" style="width: 35%"></div>
+                </div>
+                <p class="text-center text-gray-400 mt-2">Estimated Progress: 35%</p>
+            </div>
+        </div>
+
         <div class="relative border-l-4 border-gold-400 ml-4 md:ml-12 lg:ml-24">
             <!-- Milestone 1 -->
             <div class="mb-8 flex items-start">
-                <div class="flex-shrink-0 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
-                    1
+                <div class="flex-shrink-0 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
+                    ✓
                 </div>
-                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-red-500 w-full">
-                    <h2 class="text-2xl font-bold text-gray-100 mb-2">Birth of a Red Heifer</h2>
-                    <p class="text-sm text-gray-400 mb-4">Date: Ongoing</p>
-                    <p class="text-gray-300">The birth of a blemish-free red heifer is a foundational requirement for the purification rituals necessary for Temple service. This event is closely monitored by religious scholars and organizations.</p>
+                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-green-500 w-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold text-gray-100">Birth of Red Heifers</h2>
+                        <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">COMPLETED</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Completed: 2019-2021 | Last Update: September 2022</p>
+                    <p class="text-gray-300 mb-4">Five qualifying red heifers were born in Texas and successfully transported to Israel in September 2022. Two remain viable candidates as of 2025.</p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                        <div class="bg-gray-700 p-3 rounded">
+                            <p class="text-xs text-gray-400">Original Count</p>
+                            <p class="text-lg font-bold text-white">5</p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded">
+                            <p class="text-xs text-gray-400">Current Viable</p>
+                            <p class="text-lg font-bold text-green-400">2</p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded">
+                            <p class="text-xs text-gray-400">Age Range</p>
+                            <p class="text-lg font-bold text-white">3-4 yrs</p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded">
+                            <p class="text-xs text-gray-400">Location</p>
+                            <p class="text-lg font-bold text-white">Israel</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Milestone 2 -->
             <div class="mb-8 flex items-start">
-                <div class="flex-shrink-0 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
-                    2
+                <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
+                    ⚡
                 </div>
-                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-red-500 w-full">
-                    <h2 class="text-2xl font-bold text-gray-100 mb-2">Arrival of Red Heifers in Israel</h2>
-                    <p class="text-sm text-gray-400 mb-4">Date: Recent (Placeholder)</p>
-                    <p class="text-gray-300">The physical presence of qualifying red heifers in Israel is a significant step, indicating serious intent and preparation for future Temple-related activities.</p>
+                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-yellow-500 w-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold text-gray-100">Temple Institute Preparations</h2>
+                        <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">IN PROGRESS</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Ongoing since 1987 | Accelerated 2020-2025</p>
+                    <p class="text-gray-300 mb-4">The Temple Institute continues creating sacred vessels, priestly garments, and training programs. Recent years have seen accelerated preparation activities.</p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                        <div class="bg-gray-700 p-3 rounded">
+                            <p class="text-xs text-gray-400">Sacred Vessels</p>
+                            <p class="text-lg font-bold text-yellow-400">90%</p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded">
+                            <p class="text-xs text-gray-400">Priestly Garments</p>
+                            <p class="text-lg font-bold text-yellow-400">75%</p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded">
+                            <p class="text-xs text-gray-400">Training Programs</p>
+                            <p class="text-lg font-bold text-yellow-400">Active</p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded">
+                            <p class="text-xs text-gray-400">Architectural Plans</p>
+                            <p class="text-lg font-bold text-yellow-400">Ready</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Milestone 3 -->
             <div class="mb-8 flex items-start">
-                <div class="flex-shrink-0 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
-                    3
+                <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
+                    🕊️
                 </div>
-                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-red-500 w-full">
-                    <h2 class="text-2xl font-bold text-gray-100 mb-2">Preparations for Temple Construction</h2>
-                    <p class="text-sm text-gray-400 mb-4">Date: Ongoing</p>
-                    <p class="text-gray-300">Efforts by organizations like the Temple Institute to prepare blueprints, sacred vessels, and priestly garments are crucial indicators of progress towards the rebuilding of the Third Temple.</p>
+                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-yellow-500 w-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold text-gray-100">Purification Ceremony Practice</h2>
+                        <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">TESTING</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">First Practice: July 2025 | Location: Northern Israel</p>
+                    <p class="text-gray-300 mb-4">Practice ceremonies have been conducted to ensure proper execution of the biblical purification ritual when the time comes.</p>
+                    
+                    <div class="w-full bg-gray-700 rounded-full h-2 mt-4">
+                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 60%"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">Ritual Preparation: 60% Complete</p>
                 </div>
             </div>
 
             <!-- Milestone 4 -->
             <div class="mb-8 flex items-start">
-                <div class="flex-shrink-0 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
-                    4
+                <div class="flex-shrink-0 w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
+                    🏛️
                 </div>
-                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-red-500 w-full">
-                    <h2 class="text-2xl font-bold text-gray-100 mb-2">Increased Global Awareness</h2>
-                    <p class="text-sm text-gray-400 mb-4">Date: Current</p>
-                    <p class="text-gray-300">A growing interest and discussion among various communities worldwide regarding these prophetic events signifies a broader recognition of their potential significance.</p>
+                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-gray-500 w-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold text-gray-100">Political/Religious Alignment</h2>
+                        <span class="bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-semibold">DEVELOPING</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Status: Complex negotiations ongoing</p>
+                    <p class="text-gray-300 mb-4">Political and religious consensus for Temple Mount activities remains a significant challenge requiring careful diplomatic navigation.</p>
+                    
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <div class="bg-gray-700 p-3 rounded text-center">
+                            <p class="text-xs text-gray-400">Religious Support</p>
+                            <p class="text-lg font-bold text-blue-400">High</p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded text-center">
+                            <p class="text-xs text-gray-400">Political Climate</p>
+                            <p class="text-lg font-bold text-yellow-400">Mixed</p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded text-center">
+                            <p class="text-xs text-gray-400">International</p>
+                            <p class="text-lg font-bold text-red-400">Cautious</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Milestone 5 -->
+            <div class="mb-8 flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
+                    ⏳
+                </div>
+                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-gray-600 w-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold text-gray-100">Red Heifer Sacrifice</h2>
+                        <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm font-semibold">AWAITING</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Target Window: Potentially 2025-2026</p>
+                    <p class="text-gray-300 mb-4">The culminating event that would enable Temple purification rituals. Timing depends on religious authority approval and political circumstances.</p>
+                    
+                    <div class="bg-gray-700 p-4 rounded mt-4">
+                        <p class="text-sm text-gray-300 font-semibold mb-2">Prerequisites:</p>
+                        <ul class="text-sm text-gray-400 space-y-1">
+                            <li>✓ Viable red heifer available</li>
+                            <li>✓ Ritual knowledge prepared</li>
+                            <li>⏳ Religious authority consensus</li>
+                            <li>⏳ Appropriate timing/location</li>
+                            <li>⏳ Political stability</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

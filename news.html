@@ -40,41 +40,90 @@
     In 2022, five red heifers were flown from Texas to Israel under the supervision of Jewish and Christian groups. As of 2025, two of these heifers remain viable candidates for the purification ritual, which is seen by many as a key milestone toward enabling the return of Temple worship. These developments are closely watched by religious groups, political analysts, and prophecy-focused communities around the world.
   </p>
 </section>
-        <h1 class="text-4xl font-bold text-red-500 mb-8 text-center">Latest News & Updates</h1>
+        <h1 class="text-4xl font-bold text-red-500 mb-8 text-center">News Hub</h1>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- News Article 1 -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-gold-400">
-                <h2 class="text-2xl font-bold text-gray-100 mb-2">Two Red Heifers Still Viable for Temple Purification Ritual</h2>
-                <p class="text-sm text-gray-400 mb-4">January 2025</p>
-                <p class="text-gray-300 mb-4">Out of the five red heifers transported to Israel in September 2022, two are reportedly still considered preliminarily qualified for the purification rituals. This development continues to draw significant attention from religious groups.</p>
-                <a href="#" class="text-red-400 hover:text-red-300 font-semibold">Read More &rarr;</a>
-            </div>
-
-            <!-- News Article 2 -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-gold-400">
-                <h2 class="text-2xl font-bold text-gray-100 mb-2">Practice Run of Red Heifer Purification Ceremony Held in Northern Israel</h2>
-                <p class="text-sm text-gray-400 mb-4">July 1, 2025</p>
-                <p class="text-gray-300 mb-4">A practice run of the red heifer purification ceremony was reportedly conducted in northern Israel. While the heifer used was not one of the official candidates, the ritual followed biblical guidelines, marking a significant step towards re-establishing ancient purification systems.</p>
-                <a href="#" class="text-red-400 hover:text-red-300 font-semibold">Read More &rarr;</a>
-            </div>
-
-            <!-- News Article 3 -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-gold-400">
-                <h2 class="text-2xl font-bold text-gray-100 mb-2">Temple Institute Continues Preparations for Third Temple</h2>
-                <p class="text-sm text-gray-400 mb-4">Throughout 2024-2025</p>
-                <p class="text-gray-300 mb-4">The Temple Institute in Jerusalem remains active in its preparations for the rebuilding of the Third Temple, including creating sacred vessels, garments, and training Levite priests. Their commitment persists amidst regional tensions.</p>
-                <a href="#" class="text-red-400 hover:text-red-300 font-semibold">Read More &rarr;</a>
-            </div>
-
-            <!-- News Article 4 -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-gold-400">
-                <h2 class="text-2xl font-bold text-gray-100 mb-2">Speculation on Red Heifer Sacrifice During 2025 Holidays</h2>
-                <p class="text-sm text-gray-400 mb-4">Unconfirmed Reports, 2025</p>
-                <p class="text-gray-300 mb-4">Unconfirmed reports suggest a potential sacrifice of the red heifers could take place during the holidays of 2025. This remains a subject of intense speculation and close monitoring by observers.</p>
-                <a href="#" class="text-red-400 hover:text-red-300 font-semibold">Read More &rarr;</a>
-            </div>
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap justify-center mb-8 space-x-2">
+            <button onclick="filterNews('all')" class="filter-btn active bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">All News</button>
+            <button onclick="filterNews('religious')" class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors">Religious</button>
+            <button onclick="filterNews('political')" class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors">Political</button>
+            <button onclick="filterNews('educational')" class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors">Educational</button>
+            <button onclick="filterNews('opinion')" class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors">Public Opinion</button>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="news-container">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+
+        <!-- Public Opinion Poll Section -->
+        <section class="mt-16 bg-gray-800 p-8 rounded-lg">
+            <h2 class="text-3xl font-bold text-red-400 mb-6 text-center">Community Pulse</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-100 mb-4">Quick Poll: What's Your Primary Interest?</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="radio" name="interest" value="religious" class="mr-3">
+                            <span class="text-gray-300">Religious significance and prophecy</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="interest" value="political" class="mr-3">
+                            <span class="text-gray-300">Political implications for Middle East</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="interest" value="educational" class="mr-3">
+                            <span class="text-gray-300">Historical and educational context</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="interest" value="general" class="mr-3">
+                            <span class="text-gray-300">General curiosity</span>
+                        </label>
+                    </div>
+                    <button onclick="submitPoll()" class="mt-4 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition-colors">Submit</button>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-100 mb-4">Current Results</h3>
+                    <div class="space-y-3" id="poll-results">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300">Religious significance</span>
+                            <div class="flex items-center">
+                                <div class="w-24 bg-gray-700 rounded-full h-2 mr-3">
+                                    <div class="bg-red-500 h-2 rounded-full" style="width: 45%"></div>
+                                </div>
+                                <span class="text-gray-400">45%</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300">Political implications</span>
+                            <div class="flex items-center">
+                                <div class="w-24 bg-gray-700 rounded-full h-2 mr-3">
+                                    <div class="bg-yellow-500 h-2 rounded-full" style="width: 30%"></div>
+                                </div>
+                                <span class="text-gray-400">30%</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300">Educational context</span>
+                            <div class="flex items-center">
+                                <div class="w-24 bg-gray-700 rounded-full h-2 mr-3">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 15%"></div>
+                                </div>
+                                <span class="text-gray-400">15%</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300">General curiosity</span>
+                            <div class="flex items-center">
+                                <div class="w-24 bg-gray-700 rounded-full h-2 mr-3">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 10%"></div>
+                                </div>
+                                <span class="text-gray-400">10%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -82,6 +131,195 @@
         <p>&copy; 2025 Red Heifer Watch. All rights reserved.</p>
         <p class="mt-2">Encouraging respectful discussion and informed understanding.</p>
     </footer>
+
+    <script>
+        // News articles database
+        const newsArticles = [
+            {
+                id: 1,
+                title: "Two Red Heifers Still Viable for Temple Purification Ritual",
+                date: "January 15, 2025",
+                category: "religious",
+                excerpt: "Out of the five red heifers transported to Israel in September 2022, two are reportedly still considered preliminarily qualified for the purification rituals. This development continues to draw significant attention from religious groups.",
+                content: "Detailed analysis of the current status of the red heifers and their religious significance...",
+                urgency: "high"
+            },
+            {
+                id: 2,
+                title: "Practice Run of Red Heifer Purification Ceremony Held",
+                date: "July 1, 2025",
+                category: "religious",
+                excerpt: "A practice run of the red heifer purification ceremony was reportedly conducted in northern Israel. While the heifer used was not one of the official candidates, the ritual followed biblical guidelines.",
+                content: "Details about the practice ceremony and its implications...",
+                urgency: "medium"
+            },
+            {
+                id: 3,
+                title: "Political Tensions Rise Over Temple Mount Activities",
+                date: "December 20, 2024",
+                category: "political",
+                excerpt: "Regional political leaders express concern over increased activities related to Temple preparations, with some calling for international monitoring.",
+                content: "Analysis of political reactions and diplomatic responses...",
+                urgency: "high"
+            },
+            {
+                id: 4,
+                title: "Understanding the Biblical Red Heifer: A Historical Perspective",
+                date: "November 10, 2024",
+                category: "educational",
+                excerpt: "An in-depth look at the historical and theological significance of the red heifer in Jewish tradition, tracing its role from ancient times to modern preparations.",
+                content: "Comprehensive educational content about red heifer significance...",
+                urgency: "low"
+            },
+            {
+                id: 5,
+                title: "Global Survey: Public Opinion on Temple Reconstruction",
+                date: "October 5, 2024",
+                category: "opinion",
+                excerpt: "International polling reveals diverse perspectives on Temple reconstruction efforts, with significant variation across religious and geographic lines.",
+                content: "Detailed polling data and analysis of public sentiment...",
+                urgency: "medium"
+            },
+            {
+                id: 6,
+                title: "Temple Institute Advances Sacred Vessel Preparations",
+                date: "September 15, 2024",
+                category: "religious",
+                excerpt: "The Temple Institute continues its meticulous work creating golden vessels, priestly garments, and other sacred items required for future Temple service.",
+                content: "Updates on Temple Institute activities and preparations...",
+                urgency: "medium"
+            },
+            {
+                id: 7,
+                title: "Middle East Analysts Discuss Prophetic Event Implications",
+                date: "August 20, 2024",
+                category: "political",
+                excerpt: "Security experts and diplomatic analysts weigh in on potential regional impacts of accelerated Temple-related activities.",
+                content: "Expert analysis of geopolitical implications...",
+                urgency: "high"
+            },
+            {
+                id: 8,
+                title: "Archaeological Discoveries Support Temple Mount History",
+                date: "July 30, 2024",
+                category: "educational",
+                excerpt: "Recent archaeological findings provide new insights into the historical Temple complex, supporting traditional accounts of its structure and function.",
+                content: "Archaeological evidence and historical context...",
+                urgency: "low"
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderNews(articles = newsArticles) {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
+
+            articles.forEach(article => {
+                const urgencyColors = {
+                    'high': 'border-red-500',
+                    'medium': 'border-yellow-500',
+                    'low': 'border-green-500'
+                };
+
+                const categoryIcons = {
+                    'religious': '✡️',
+                    'political': '🏛️',
+                    'educational': '📚',
+                    'opinion': '💭'
+                };
+
+                const articleElement = document.createElement('div');
+                articleElement.className = `news-article bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 ${urgencyColors[article.urgency]} transition-all duration-300 hover:transform hover:scale-105`;
+                articleElement.setAttribute('data-category', article.category);
+
+                articleElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-2xl">${categoryIcons[article.category]}</span>
+                        <span class="text-xs px-2 py-1 bg-gray-700 text-gray-300 rounded">${article.category.toUpperCase()}</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-100 mb-2">${article.title}</h2>
+                    <p class="text-sm text-gray-400 mb-4">${article.date}</p>
+                    <p class="text-gray-300 mb-4">${article.excerpt}</p>
+                    <button onclick="openArticle(${article.id})" class="text-red-400 hover:text-red-300 font-semibold transition-colors">Read Full Article →</button>
+                `;
+
+                container.appendChild(articleElement);
+            });
+        }
+
+        function filterNews(category) {
+            currentFilter = category;
+            
+            // Update button styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-red-600', 'text-white');
+                btn.classList.add('bg-gray-700', 'text-gray-300');
+            });
+            
+            event.target.classList.add('active', 'bg-red-600', 'text-white');
+            event.target.classList.remove('bg-gray-700', 'text-gray-300');
+
+            // Filter articles
+            if (category === 'all') {
+                renderNews(newsArticles);
+            } else {
+                const filteredArticles = newsArticles.filter(article => article.category === category);
+                renderNews(filteredArticles);
+            }
+        }
+
+        function openArticle(articleId) {
+            const article = newsArticles.find(a => a.id === articleId);
+            if (article) {
+                // Create modal overlay
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4';
+                modal.onclick = (e) => {
+                    if (e.target === modal) closeModal();
+                };
+
+                modal.innerHTML = `
+                    <div class="bg-gray-800 rounded-lg p-8 max-w-2xl max-h-96 overflow-y-auto">
+                        <div class="flex justify-between items-start mb-4">
+                            <h2 class="text-2xl font-bold text-gray-100 pr-4">${article.title}</h2>
+                            <button onclick="closeModal()" class="text-gray-400 hover:text-gray-200 text-2xl">&times;</button>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-4">${article.date} • ${article.category.toUpperCase()}</p>
+                        <p class="text-gray-300 mb-4">${article.excerpt}</p>
+                        <div class="text-gray-300 leading-relaxed">
+                            <p>${article.content}</p>
+                            <p class="mt-4 text-sm text-gray-400"><em>This is a developing story. Check back for updates.</em></p>
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(modal);
+            }
+        }
+
+        function closeModal() {
+            const modal = document.querySelector('.fixed.inset-0');
+            if (modal) {
+                document.body.removeChild(modal);
+            }
+        }
+
+        function submitPoll() {
+            const selectedOption = document.querySelector('input[name="interest"]:checked');
+            if (selectedOption) {
+                alert(`Thank you for your response! You selected: ${selectedOption.nextElementSibling.textContent}`);
+                // In a real app, this would send data to a server
+            } else {
+                alert('Please select an option before submitting.');
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderNews();
+        });
+    </script>
 
 </body>
 </html>
