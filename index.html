@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Red Heifer Watch - Prophecy Unfolds</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -125,46 +127,154 @@
 
         /* Mobile optimizations */
         @media (max-width: 768px) {
-            .particle {
-                width: 60px;
-                height: 30px;
-                opacity: 0.4;
-                filter: drop-shadow(0 0 4px rgba(0, 255, 0, 0.3)) brightness(1.1) contrast(1.2);
+            /* Disable resource-intensive effects on mobile */
+            .particles {
+                display: none !important;
             }
             
-            .particles {
+            .youtube-background {
+                display: none !important;
+            }
+            
+            /* Mobile background alternative */
+            .video-container::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: 
+                    linear-gradient(45deg, rgba(255, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(255, 0, 0, 0.3) 100%),
+                    radial-gradient(circle at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.9) 100%);
                 z-index: 1;
             }
             
             .hero-content {
                 z-index: 10;
                 position: relative;
-                background: rgba(0, 0, 0, 0.7);
-                border-radius: 15px;
-                padding: 2rem;
-                backdrop-filter: blur(10px);
+                background: rgba(0, 0, 0, 0.85);
+                border-radius: 20px;
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+                backdrop-filter: blur(15px);
+                border: 1px solid rgba(255, 0, 0, 0.3);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
             }
             
             .hero-title {
-                font-size: clamp(2rem, 8vw, 4rem) !important;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 0, 0, 0.8) !important;
+                font-size: clamp(1.8rem, 7vw, 3.5rem) !important;
+                text-shadow: 
+                    2px 2px 4px rgba(0, 0, 0, 1), 
+                    0 0 20px rgba(255, 0, 0, 0.9),
+                    0 0 40px rgba(255, 0, 0, 0.5) !important;
+                margin-bottom: 1rem !important;
+                line-height: 1.1 !important;
             }
             
             .hero-subtitle {
-                font-size: clamp(1rem, 4vw, 1.5rem) !important;
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9) !important;
+                font-size: clamp(0.9rem, 3.5vw, 1.3rem) !important;
+                text-shadow: 
+                    1px 1px 2px rgba(0, 0, 0, 1),
+                    0 0 10px rgba(255, 215, 0, 0.8) !important;
+                margin-bottom: 2rem !important;
+                line-height: 1.4 !important;
+                font-weight: 400 !important;
             }
             
             .cta-buttons {
                 gap: 1rem !important;
                 flex-direction: column !important;
                 align-items: center !important;
+                width: 100% !important;
             }
             
             .cta-button {
                 width: 100% !important;
-                max-width: 300px !important;
+                max-width: 280px !important;
                 text-align: center !important;
+                min-height: 44px !important;
+                font-size: 1rem !important;
+                font-weight: 700 !important;
+                padding: 1rem 1.5rem !important;
+                border-radius: 25px !important;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+                transition: all 0.3s ease !important;
+                
+                /* Mobile touch optimizations */
+                -webkit-tap-highlight-color: transparent;
+                -webkit-touch-callout: none;
+                user-select: none;
+            }
+            
+            .cta-button:active {
+                transform: translateY(2px) !important;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6) !important;
+            }
+            
+            /* Floating cow optimization for mobile */
+            .floating-cow {
+                width: 80px !important;
+                height: 80px !important;
+                bottom: 15% !important;
+                right: 5% !important;
+                z-index: 5 !important;
+                opacity: 0.9 !important;
+                filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8)) !important;
+                
+                /* GPU acceleration for smooth animation */
+                will-change: transform;
+                transform: translateZ(0);
+                backface-visibility: hidden;
+            }
+            
+            /* Respect motion preferences */
+            @media (prefers-reduced-motion: reduce) {
+                .floating-cow {
+                    animation: none !important;
+                    transform: translateZ(0) !important;
+                }
+            }
+            
+            /* Ensure proper text sizing */
+            html {
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+            }
+            
+            body {
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
+            }
+        }
+        
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .hero-content {
+                margin: 0.5rem;
+                padding: 1.5rem 1rem;
+                border-radius: 15px;
+            }
+            
+            .hero-title {
+                font-size: clamp(1.5rem, 6vw, 2.8rem) !important;
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.8rem, 3vw, 1.1rem) !important;
+            }
+            
+            .cta-button {
+                max-width: 250px !important;
+                font-size: 0.9rem !important;
+                padding: 0.8rem 1.2rem !important;
+            }
+            
+            .floating-cow {
+                width: 60px !important;
+                height: 60px !important;
+                bottom: 10% !important;
+                right: 3% !important;
             }
         }
 
@@ -845,9 +955,13 @@
         // $100 Bill Rain System
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            // Reduce particle count on mobile for better performance and readability
+            // Skip particles entirely on mobile for better performance
             const isMobile = window.innerWidth <= 768;
-            const particleCount = isMobile ? 12 : 25;
+            if (isMobile) {
+                console.log('💰 Skipping particles on mobile for better performance');
+                return;
+            }
+            const particleCount = 25;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -1084,11 +1198,25 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🚀 Page loading - starting audio immediately');
             
+            // Mobile performance optimizations
+            const isMobile = window.innerWidth <= 768;
+            
             // Initialize audio FIRST and IMMEDIATELY
             initAudio();
             
-            createParticles();
-            enhanceGlitch();
+            if (!isMobile) {
+                createParticles();
+                enhanceGlitch();
+            } else {
+                console.log('📱 Mobile mode: Skipping resource-intensive effects');
+                // Ensure floating cow is visible on mobile
+                const cow = document.querySelector('.floating-cow');
+                if (cow) {
+                    cow.style.display = 'block';
+                    cow.style.opacity = '0.9';
+                }
+            }
+            
             initHeiferMovement();
             
             // Update background on scroll
