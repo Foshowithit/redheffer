@@ -109,25 +109,25 @@
 
         .particle {
             position: absolute;
-            width: 80px;
-            height: 40px;
-            background-image: url('./assets/hundred_dollar_bill.jpg');
+            width: 100px;
+            height: 50px;
+            background-image: url('./assets/hundred_dollar_bill.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             border-radius: 3px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
             animation: float 15s infinite linear;
-            opacity: 0.9;
+            opacity: 1.0;
             pointer-events: none;
-            filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.3));
+            filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.6)) brightness(1.1) contrast(1.2);
         }
 
         @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
             5% { opacity: 0.9; }
             95% { opacity: 0.9; }
-            100% { transform: translateY(-100vh) rotate(180deg); opacity: 0; }
+            100% { transform: translateY(100vh) rotate(180deg); opacity: 0; }
         }
         
         @keyframes moneyRotate {
@@ -237,6 +237,12 @@
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
             animation-delay: -3s;
         }
+        
+        .cta-button.social {
+            background: linear-gradient(45deg, #1da1f2, #0d8bd9);
+            box-shadow: 0 10px 30px rgba(29, 161, 242, 0.3);
+            animation-delay: -1.5s;
+        }
 
         @keyframes buttonFloat {
             0%, 100% { transform: translateY(0px); }
@@ -265,6 +271,10 @@
 
         .cta-button.secondary:hover {
             box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+        
+        .cta-button.social:hover {
+            box-shadow: 0 15px 40px rgba(29, 161, 242, 0.5);
         }
 
         /* Stats Section */
@@ -778,6 +788,7 @@
                 <div class="cta-buttons">
                     <a href="main.html" class="cta-button">ENTER SITE</a>
                     <a href="prophecy.html" class="cta-button secondary">TRACK PROPHECY</a>
+                    <a href="https://x.com/i/communities/1945653928684650608" target="_blank" class="cta-button social">JOIN COMMUNITY 𝕏</a>
                 </div>
             </div>
         </div>
@@ -808,20 +819,7 @@
                 // Random rotation start
                 particle.style.transform += ` rotate(${Math.random() * 360}deg)`;
                 
-                // Fallback if image doesn't load
-                particle.addEventListener('error', () => {
-                    particle.style.backgroundImage = 'none';
-                    particle.style.backgroundColor = '#1a5d1a';
-                    particle.style.border = '2px solid #00ff00';
-                    particle.textContent = '$100';
-                    particle.style.color = '#00ff00';
-                    particle.style.fontSize = '12px';
-                    particle.style.fontWeight = 'bold';
-                    particle.style.display = 'flex';
-                    particle.style.alignItems = 'center';
-                    particle.style.justifyContent = 'center';
-                    particle.style.fontFamily = 'monospace';
-                });
+                console.log('💰 Using your specific $100 bill PNG image!');
                 
                 particlesContainer.appendChild(particle);
             }
