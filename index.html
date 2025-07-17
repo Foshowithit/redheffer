@@ -29,6 +29,38 @@
             --text-muted: #8BB8E8;
         }
 
+        .floating-ca {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--light-blue);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--light-blue);
+            z-index: 1000;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1rem;
+            text-shadow: 0 0 10px var(--light-blue);
+            animation: float-ca 5s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .floating-ca a {
+            color: var(--light-blue);
+            text-decoration: none;
+        }
+
+        @keyframes float-ca {
+            0%, 100% {
+                transform: translate(-50%, 0);
+            }
+            50% {
+                transform: translate(-50%, -10px);
+            }
+        }
+
         body {
             font-family: 'Exo 2', sans-serif;
             background: transparent;
@@ -1349,5 +1381,8 @@
             }
         });
     </script>
+    <div class="floating-ca">
+        <a href="https://pump.fun/coin/47AHccx24xCugUuqCDUiFFhunvztYydEJTefv29Kpump" target="_blank">CA: 47AHccx24xCugUuqCDUiFFhunvztYydEJTefv29Kpump</a>
+    </div>
 </body>
 </html>
