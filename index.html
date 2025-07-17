@@ -165,6 +165,61 @@
                 display: none !important;
             }
             
+            /* Simplify and stabilize floating cow for mobile */
+            .floating-cow {
+                position: absolute !important;
+                bottom: 5% !important;
+                right: 5% !important;
+                width: 70px !important;
+                height: 70px !important;
+                z-index: 15 !important;
+                opacity: 1 !important;
+                animation: none !important;
+                transform: none !important;
+                filter: none !important;
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            .floating-cow img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: contain !important;
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            /* Mobile-specific cow for maximum reliability */
+            .mobile-cow {
+                display: block !important;
+                position: fixed !important;
+                bottom: 10% !important;
+                right: 5% !important;
+                width: 60px !important;
+                height: 60px !important;
+                z-index: 999999 !important;
+                opacity: 1 !important;
+                pointer-events: none !important;
+                /* Force browser to render it */
+                transform: translateZ(0) !important;
+                will-change: auto !important;
+                backface-visibility: visible !important;
+            }
+            
+            .mobile-cow img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: contain !important;
+                display: block !important;
+                opacity: 1 !important;
+                filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6)) !important;
+            }
+            
+            /* Hide desktop cow on mobile */
+            .floating-cow {
+                display: none !important;
+            }
+            
             /* Mobile background alternative */
             .video-container::after {
                 content: '';
@@ -201,13 +256,17 @@
             .hero-content {
                 z-index: 10;
                 position: relative;
-                background: rgba(0, 0, 0, 0.85);
-                border-radius: 20px;
-                padding: 2rem 1.5rem;
+                background: rgba(0, 0, 0, 0.90);
+                border-radius: 25px;
+                padding: 2.5rem 1.8rem;
                 margin: 1rem;
-                backdrop-filter: blur(15px);
-                border: 1px solid rgba(255, 0, 0, 0.3);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+                backdrop-filter: blur(20px);
+                border: 2px solid rgba(255, 0, 0, 0.4);
+                box-shadow: 
+                    0 15px 35px rgba(0, 0, 0, 0.8),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                /* Ensure content is always above other elements */
+                isolation: isolate;
             }
             
             .hero-title {
@@ -999,6 +1058,11 @@
             <div class="floating-cow">
                 <img src="./assets/hef.png" alt="Red Heifer" />
             </div>
+            
+            <!-- Mobile-specific cow for reliability -->
+            <div class="mobile-cow" style="display: none;">
+                <img src="./assets/hef.png" alt="Red Heifer" />
+            </div>
         </div>
     </section>
 
@@ -1262,12 +1326,27 @@
                 enhanceGlitch();
             } else {
                 console.log('📱 Mobile mode: Skipping resource-intensive effects');
-                // Ensure floating cow is visible on mobile
-                const cow = document.querySelector('.floating-cow');
-                if (cow) {
-                    cow.style.display = 'block';
-                    cow.style.opacity = '0.9';
-                }
+                
+                // Use mobile-specific cow for maximum reliability
+                setTimeout(() => {
+                    const mobileCow = document.querySelector('.mobile-cow');
+                    const desktopCow = document.querySelector('.floating-cow');
+                    
+                    // Hide desktop cow
+                    if (desktopCow) {
+                        desktopCow.style.display = 'none';
+                    }
+                    
+                    // Show and position mobile cow
+                    if (mobileCow) {
+                        mobileCow.style.display = 'block';
+                        mobileCow.style.visibility = 'visible';
+                        mobileCow.style.opacity = '1';
+                        console.log('🐄 Mobile-specific cow activated successfully');
+                    } else {
+                        console.log('⚠️ Mobile cow element not found');
+                    }
+                }, 50);
             }
             
             initHeiferMovement();
