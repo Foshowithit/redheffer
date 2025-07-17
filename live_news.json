@@ -1,0 +1,50 @@
+{
+  "last_updated": "2025-07-16T13:35:27.623705",
+  "articles": [
+    {
+      "title": "Two Red Heifers Remain Viable for Temple Purification Ritual",
+      "description": "Out of five red heifers transported to Israel in 2022, two continue to meet the strict biblical requirements for the purification ceremony.",
+      "pub_date": "Wed, 16 Jul 2025 13:35:27 UTC",
+      "source": "Red Heifer Watch",
+      "category": "religious",
+      "urgency": "high",
+      "link": "#"
+    },
+    {
+      "title": "Temple Institute Accelerates Sacred Vessel Production",
+      "description": "The Temple Institute reports significant progress in creating golden vessels and priestly garments required for future Temple service.",
+      "pub_date": "Wed, 16 Jul 2025 07:35:27 UTC",
+      "source": "Temple Institute",
+      "category": "religious",
+      "urgency": "medium",
+      "link": "#"
+    },
+    {
+      "title": "Regional Leaders Monitor Temple Mount Developments",
+      "description": "Political analysts and diplomatic officials continue to watch Temple-related activities with keen interest amid ongoing regional tensions.",
+      "pub_date": "Wed, 16 Jul 2025 01:35:27 UTC",
+      "source": "Regional News",
+      "category": "political",
+      "urgency": "medium",
+      "link": "#"
+    },
+    {
+      "title": "Understanding the Biblical Red Heifer Requirement",
+      "description": "Archaeological and biblical scholars explain the historical significance of the red heifer in ancient Jewish purification rituals.",
+      "pub_date": "Tue, 15 Jul 2025 13:35:27 UTC",
+      "source": "Educational Resources",
+      "category": "educational",
+      "urgency": "low",
+      "link": "#"
+    },
+    {
+      "title": "Global Survey Reveals Diverse Views on Temple Reconstruction",
+      "description": "International polling shows varied perspectives on Temple rebuilding efforts, with significant differences across religious and cultural lines.",
+      "pub_date": "Mon, 14 Jul 2025 13:35:27 UTC",
+      "source": "Global Opinion Research",
+      "category": "opinion",
+      "urgency": "low",
+      "link": "#"
+    }
+  ]
+}

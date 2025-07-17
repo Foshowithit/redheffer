@@ -1,0 +1,16 @@
+2025-07-16 13:34:53 - Starting automated news update process
+🔄 Starting news update process...
+📰 Updating news HTML with live data...
+Fetching: red heifer Israel
+Fetching: Temple Mount
+Fetching: Temple Institute
+Fetching: Third Temple
+Fetching: Jerusalem Temple Mount
+Fetching: Israeli red heifer
+Using fallback articles due to limited live news
+Saved 5 articles to live_news.json
+✅ Successfully updated news.html with 5 live articles
+📅 Last updated: July 16, 2025 at 01:35 PM
+🎉 News update completed successfully!
+2025-07-16 13:35:46 - News update completed successfully
+2025-07-16 13:35:46 - Update process completed

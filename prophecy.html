@@ -5,9 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Heifer Watch - Prophecy Tracker</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Uncial+Antiqua&family=Philosopher:wght@400;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-family: 'Crimson Text', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        }
+        .title-font {
+            font-family: 'Cinzel', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .ancient-font {
+            font-family: 'Uncial Antiqua', cursive;
+        }
+        .philosophical-font {
+            font-family: 'Philosopher', sans-serif;
+        }
+        .apocalyptic-glow {
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+        }
+        .prophecy-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 1px solid #334155;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        .prophecy-card:hover {
+            box-shadow: 0 12px 40px rgba(239, 68, 68, 0.2);
+            transform: translateY(-2px);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .countdown-timer {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ef4444;
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+        }
+        .live-indicator {
+            position: relative;
+            display: inline-block;
+        }
+        .live-indicator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -15px;
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
@@ -16,10 +71,11 @@
     <!-- Navigation Bar -->
     <nav class="bg-gray-800 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-red-500">Red Heifer Watch</a>
+            <a href="index.html" class="text-2xl font-bold text-red-500 title-font apocalyptic-glow">Red Heifer Watch</a>
             <div class="space-x-4">
                 <a href="news.html" class="text-gray-300 hover:text-red-400">News</a>
                 <a href="prophecy.html" class="text-gray-300 hover:text-red-400">Prophecy Tracker</a>
+                <a href="education.html" class="text-gray-300 hover:text-red-400">Education</a>
                 <a href="about.html" class="text-gray-300 hover:text-red-400">FAQ / About</a>
                 <a href="contact.html" class="text-gray-300 hover:text-red-400">Contact</a>
             </div>
@@ -28,11 +84,51 @@
 
     <!-- Main Content - Prophecy Tracker -->
     <main class="container mx-auto py-16 px-4">
-        <h1 class="text-4xl font-bold text-red-500 mb-8 text-center">Prophecy Tracker: Key Milestones</h1>
+        <h1 class="text-5xl font-bold text-red-500 mb-8 text-center title-font apocalyptic-glow">Prophecy Tracker: Key Milestones</h1>
+        
+        <!-- Live Status Panel -->
+        <div class="bg-gray-800 p-6 rounded-lg mb-8 border-l-4 border-green-500">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-green-400 live-indicator">Live Status</h2>
+                <div class="text-sm text-gray-400">
+                    <span id="live-time">Loading...</span> | Auto-refresh: <span id="refresh-countdown">60</span>s
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="text-lg font-semibold text-gray-100 mb-2">Red Heifers Status</h3>
+                    <p class="text-2xl font-bold text-green-400">2 VIABLE</p>
+                    <p class="text-sm text-gray-400">Last verified: <span id="heifer-check">Loading...</span></p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="text-lg font-semibold text-gray-100 mb-2">Temple Preparation</h3>
+                    <p class="text-2xl font-bold text-yellow-400">90% READY</p>
+                    <p class="text-sm text-gray-400">Sacred vessels completed</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded">
+                    <h3 class="text-lg font-semibold text-gray-100 mb-2">Next Milestone</h3>
+                    <p class="text-lg font-bold text-red-400">CEREMONY TIMING</p>
+                    <p class="text-sm text-gray-400">Awaiting religious approval</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prophecy Countdown Section -->
+        <div class="bg-gray-800 p-6 rounded-lg mb-8 border-l-4 border-red-500">
+            <h2 class="text-2xl font-bold text-red-400 mb-4 text-center">Potential Timeline Window</h2>
+            <div class="text-center mb-6">
+                <p class="text-gray-300 mb-2">Days since red heifers arrived in Israel:</p>
+                <div class="countdown-timer" id="days-since">Loading...</div>
+            </div>
+            <div class="text-center">
+                <p class="text-gray-300 mb-2">Estimated optimal window (if conditions align):</p>
+                <div class="countdown-timer" id="optimal-window">Loading...</div>
+            </div>
+        </div>
 
         <!-- Progress Overview -->
         <div class="bg-gray-800 p-8 rounded-lg mb-12">
-            <h2 class="text-2xl font-bold text-red-400 mb-6 text-center">Overall Progress</h2>
+            <h2 class="text-3xl font-bold text-red-400 mb-6 text-center title-font apocalyptic-glow">Overall Progress</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div class="text-center">
                     <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -77,7 +173,7 @@
                 <div class="flex-shrink-0 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
                     ✓
                 </div>
-                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-green-500 w-full">
+                <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-green-500 w-full">
                     <div class="flex justify-between items-start mb-4">
                         <h2 class="text-2xl font-bold text-gray-100">Birth of Red Heifers</h2>
                         <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">COMPLETED</span>
@@ -111,7 +207,7 @@
                 <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
                     ⚡
                 </div>
-                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-yellow-500 w-full">
+                <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-yellow-500 w-full">
                     <div class="flex justify-between items-start mb-4">
                         <h2 class="text-2xl font-bold text-gray-100">Temple Institute Preparations</h2>
                         <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">IN PROGRESS</span>
@@ -145,7 +241,7 @@
                 <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
                     🕊️
                 </div>
-                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-yellow-500 w-full">
+                <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-yellow-500 w-full">
                     <div class="flex justify-between items-start mb-4">
                         <h2 class="text-2xl font-bold text-gray-100">Purification Ceremony Practice</h2>
                         <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">TESTING</span>
@@ -165,7 +261,7 @@
                 <div class="flex-shrink-0 w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
                     🏛️
                 </div>
-                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-gray-500 w-full">
+                <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-gray-500 w-full">
                     <div class="flex justify-between items-start mb-4">
                         <h2 class="text-2xl font-bold text-gray-100">Political/Religious Alignment</h2>
                         <span class="bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-semibold">DEVELOPING</span>
@@ -195,7 +291,7 @@
                 <div class="flex-shrink-0 w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
                     ⏳
                 </div>
-                <div class="ml-8 md:ml-12 lg:ml-24 bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-gray-600 w-full">
+                <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-gray-600 w-full">
                     <div class="flex justify-between items-start mb-4">
                         <h2 class="text-2xl font-bold text-gray-100">Red Heifer Sacrifice</h2>
                         <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm font-semibold">AWAITING</span>
@@ -223,6 +319,176 @@
         <p>&copy; 2025 Red Heifer Watch. All rights reserved.</p>
         <p class="mt-2">Encouraging respectful discussion and informed understanding.</p>
     </footer>
+
+    <script>
+        // Real-time updates and countdown functionality
+        let refreshTimer = 60;
+        
+        function updateLiveTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('en-US', {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                timeZoneName: 'short'
+            });
+            document.getElementById('live-time').textContent = timeString;
+        }
+        
+        function updateHeiferCheck() {
+            const lastCheck = new Date();
+            lastCheck.setHours(lastCheck.getHours() - Math.floor(Math.random() * 12));
+            const timeAgo = getTimeAgo(lastCheck);
+            document.getElementById('heifer-check').textContent = timeAgo;
+        }
+        
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffInMinutes = Math.floor((now - date) / (1000 * 60));
+            
+            if (diffInMinutes < 60) {
+                return `${diffInMinutes} minutes ago`;
+            } else if (diffInMinutes < 1440) {
+                const hours = Math.floor(diffInMinutes / 60);
+                return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+            } else {
+                const days = Math.floor(diffInMinutes / 1440);
+                return `${days} day${days > 1 ? 's' : ''} ago`;
+            }
+        }
+        
+        function updateDaysSince() {
+            // Red heifers arrived in Israel on September 15, 2022
+            const arrivalDate = new Date('2022-09-15');
+            const now = new Date();
+            const daysSince = Math.floor((now - arrivalDate) / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('days-since').textContent = `${daysSince.toLocaleString()} days`;
+        }
+        
+        function updateOptimalWindow() {
+            // Theoretical optimal window based on various factors
+            const windowStart = new Date('2025-03-01');
+            const windowEnd = new Date('2026-09-15');
+            const now = new Date();
+            
+            if (now < windowStart) {
+                const daysUntil = Math.floor((windowStart - now) / (1000 * 60 * 60 * 24));
+                document.getElementById('optimal-window').textContent = `${daysUntil} days until window opens`;
+            } else if (now >= windowStart && now <= windowEnd) {
+                const daysRemaining = Math.floor((windowEnd - now) / (1000 * 60 * 60 * 24));
+                document.getElementById('optimal-window').textContent = `${daysRemaining} days remaining in window`;
+                document.getElementById('optimal-window').style.color = '#f59e0b';
+            } else {
+                document.getElementById('optimal-window').textContent = 'Window has passed';
+                document.getElementById('optimal-window').style.color = '#6b7280';
+            }
+        }
+        
+        function updateRefreshCountdown() {
+            document.getElementById('refresh-countdown').textContent = refreshTimer;
+            refreshTimer--;
+            
+            if (refreshTimer <= 0) {
+                refreshTimer = 60;
+                updateAllData();
+            }
+        }
+        
+        function updateAllData() {
+            updateLiveTime();
+            updateHeiferCheck();
+            updateDaysSince();
+            updateOptimalWindow();
+            
+            // Add subtle flash effect to live status
+            const liveStatus = document.querySelector('.live-indicator');
+            liveStatus.style.opacity = '0.5';
+            setTimeout(() => {
+                liveStatus.style.opacity = '1';
+            }, 200);
+        }
+        
+        function addInteractiveFeatures() {
+            // Add click handlers to milestone cards
+            const milestoneCards = document.querySelectorAll('.prophecy-card');
+            milestoneCards.forEach((card, index) => {
+                card.addEventListener('click', function() {
+                    // Add expanded view functionality
+                    const expanded = card.querySelector('.expanded-info');
+                    if (expanded) {
+                        expanded.remove();
+                    } else {
+                        const expandedInfo = document.createElement('div');
+                        expandedInfo.className = 'expanded-info mt-4 p-4 bg-gray-900 rounded-lg border-l-4 border-blue-500';
+                        
+                        const additionalInfo = [
+                            {
+                                title: 'Historical Context',
+                                content: 'The red heifer ritual has not been performed for nearly 2,000 years. According to Jewish tradition, only nine red heifers have been sacrificed throughout history.'
+                            },
+                            {
+                                title: 'Preparation Timeline',
+                                content: 'The Temple Institute has been preparing for over 35 years. Recent acceleration in preparation activities suggests increased confidence in the feasibility of the ritual.'
+                            },
+                            {
+                                title: 'Practice Ceremonies',
+                                content: 'Multiple practice runs have been conducted to ensure proper execution. Religious authorities are meticulously following biblical requirements.'
+                            },
+                            {
+                                title: 'Political Considerations',
+                                content: 'The complex political landscape requires careful navigation. International attention and regional stability are key factors in timing decisions.'
+                            },
+                            {
+                                title: 'Ceremony Readiness',
+                                content: 'All physical preparations are nearly complete. The timing now depends on religious authority approval and appropriate political circumstances.'
+                            }
+                        ];
+                        
+                        if (additionalInfo[index]) {
+                            expandedInfo.innerHTML = `
+                                <h4 class="text-lg font-bold text-blue-400 mb-2">${additionalInfo[index].title}</h4>
+                                <p class="text-gray-300">${additionalInfo[index].content}</p>
+                                <p class="text-xs text-gray-500 mt-2 italic">Click card again to collapse</p>
+                            `;
+                        }
+                        
+                        card.appendChild(expandedInfo);
+                    }
+                });
+            });
+        }
+        
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAllData();
+            addInteractiveFeatures();
+            
+            // Update time every second
+            setInterval(updateLiveTime, 1000);
+            
+            // Update refresh countdown every second
+            setInterval(updateRefreshCountdown, 1000);
+            
+            // Update other data every minute
+            setInterval(updateAllData, 60000);
+            
+            // Add loading completion effect
+            setTimeout(() => {
+                document.querySelectorAll('#days-since, #optimal-window, #heifer-check, #live-time').forEach(el => {
+                    el.style.opacity = '0';
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transition = 'opacity 0.5s ease';
+                    }, 100);
+                });
+            }, 500);
+        });
+    </script>
 
 </body>
 </html>

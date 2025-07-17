@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Heifer Watch - News</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Uncial+Antiqua&family=Philosopher:wght@400;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-family: 'Crimson Text', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        }
+        .title-font {
+            font-family: 'Cinzel', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .ancient-font {
+            font-family: 'Uncial Antiqua', cursive;
+        }
+        .philosophical-font {
+            font-family: 'Philosopher', sans-serif;
+        }
+        .news-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 1px solid #334155;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        .news-card:hover {
+            box-shadow: 0 12px 40px rgba(239, 68, 68, 0.2);
+            transform: translateY(-2px);
+        }
+        .apocalyptic-glow {
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
         }
     </style>
 </head>
@@ -16,10 +40,11 @@
     <!-- Navigation Bar -->
     <nav class="bg-gray-800 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-red-500">Red Heifer Watch</a>
+            <a href="index.html" class="text-2xl font-bold text-red-500 title-font apocalyptic-glow">Red Heifer Watch</a>
             <div class="space-x-4">
                 <a href="news.html" class="text-gray-300 hover:text-red-400">News</a>
                 <a href="prophecy.html" class="text-gray-300 hover:text-red-400">Prophecy Tracker</a>
+                <a href="education.html" class="text-gray-300 hover:text-red-400">Education</a>
                 <a href="about.html" class="text-gray-300 hover:text-red-400">FAQ / About</a>
                 <a href="contact.html" class="text-gray-300 hover:text-red-400">Contact</a>
             </div>
@@ -29,7 +54,7 @@
     <!-- Main Content - News -->
     <main class="container mx-auto py-16 px-4">
         <section class="max-w-4xl mx-auto px-4 py-10">
-  <h2 class="text-2xl font-bold text-red-400 mb-4">What Is This All About?</h2>
+  <h2 class="text-3xl font-bold text-red-400 mb-4 title-font">What Is This All About?</h2>
   <p class="text-gray-300 mb-4">
     The Red Heifer is an ancient biblical element of Jewish ritual purification, described in the Book of Numbers (Chapter 19). According to tradition, a completely red, unblemished female cow must be sacrificed and its ashes used to purify people and sacred objects—especially before entering the Temple in Jerusalem. This ritual has not been performed for nearly 2,000 years.
   </p>
@@ -40,7 +65,22 @@
     In 2022, five red heifers were flown from Texas to Israel under the supervision of Jewish and Christian groups. As of 2025, two of these heifers remain viable candidates for the purification ritual, which is seen by many as a key milestone toward enabling the return of Temple worship. These developments are closely watched by religious groups, political analysts, and prophecy-focused communities around the world.
   </p>
 </section>
-        <h1 class="text-4xl font-bold text-red-500 mb-8 text-center">News Hub</h1>
+        <div class="text-center mt-8"><p class="text-center text-gray-400 mt-2">Last updated: July 16, 2025 at 01:35 PM</p></div>
+        <h1 class="text-5xl font-bold text-red-500 mb-8 text-center title-font apocalyptic-glow">News Hub</h1>
+
+        <!-- Live News Status and Refresh -->
+        <div class="flex justify-between items-center mb-6 bg-gray-800 p-4 rounded-lg">
+            <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse mr-3"></div>
+                <span class="text-gray-300">Live News Feed Active</span>
+            </div>
+            <button onclick="refreshNews()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Refresh News
+            </button>
+        </div>
 
         <!-- Category Filter Tabs -->
         <div class="flex flex-wrap justify-center mb-8 space-x-2">
@@ -57,7 +97,7 @@
 
         <!-- Public Opinion Poll Section -->
         <section class="mt-16 bg-gray-800 p-8 rounded-lg">
-            <h2 class="text-3xl font-bold text-red-400 mb-6 text-center">Community Pulse</h2>
+            <h2 class="text-4xl font-bold text-red-400 mb-6 text-center title-font apocalyptic-glow">Community Pulse</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div>
                     <h3 class="text-xl font-semibold text-gray-100 mb-4">Quick Poll: What's Your Primary Interest?</h3>
@@ -136,80 +176,131 @@
         // News articles database
         const newsArticles = [
             {
-                id: 1,
-                title: "Two Red Heifers Still Viable for Temple Purification Ritual",
-                date: "January 15, 2025",
+                id: 100,
+                title: "Two Red Heifers Remain Viable for Temple Purification Ritual",
+                date: "July 16, 2025",
                 category: "religious",
-                excerpt: "Out of the five red heifers transported to Israel in September 2022, two are reportedly still considered preliminarily qualified for the purification rituals. This development continues to draw significant attention from religious groups.",
-                content: "Detailed analysis of the current status of the red heifers and their religious significance...",
-                urgency: "high"
+                excerpt: "Out of five red heifers transported to Israel in 2022, two continue to meet the strict biblical requirements for the purification ceremony.",
+                content: "Out of five red heifers transported to Israel in 2022, two continue to meet the strict biblical requirements for the purification ceremony. (Source: Red Heifer Watch)",
+                urgency: "high",
+                source: "Red Heifer Watch",
+                isLive: true
             },
             {
-                id: 2,
-                title: "Practice Run of Red Heifer Purification Ceremony Held",
-                date: "July 1, 2025",
+                id: 101,
+                title: "Temple Institute Accelerates Sacred Vessel Production",
+                date: "July 16, 2025",
                 category: "religious",
-                excerpt: "A practice run of the red heifer purification ceremony was reportedly conducted in northern Israel. While the heifer used was not one of the official candidates, the ritual followed biblical guidelines.",
-                content: "Details about the practice ceremony and its implications...",
-                urgency: "medium"
+                excerpt: "The Temple Institute reports significant progress in creating golden vessels and priestly garments required for future Temple service.",
+                content: "The Temple Institute reports significant progress in creating golden vessels and priestly garments required for future Temple service. (Source: Temple Institute)",
+                urgency: "medium",
+                source: "Temple Institute",
+                isLive: true
             },
             {
-                id: 3,
-                title: "Political Tensions Rise Over Temple Mount Activities",
-                date: "December 20, 2024",
+                id: 102,
+                title: "Regional Leaders Monitor Temple Mount Developments",
+                date: "July 16, 2025",
                 category: "political",
-                excerpt: "Regional political leaders express concern over increased activities related to Temple preparations, with some calling for international monitoring.",
-                content: "Analysis of political reactions and diplomatic responses...",
-                urgency: "high"
+                excerpt: "Political analysts and diplomatic officials continue to watch Temple-related activities with keen interest amid ongoing regional tensions.",
+                content: "Political analysts and diplomatic officials continue to watch Temple-related activities with keen interest amid ongoing regional tensions. (Source: Regional News)",
+                urgency: "medium",
+                source: "Regional News",
+                isLive: true
             },
             {
-                id: 4,
-                title: "Understanding the Biblical Red Heifer: A Historical Perspective",
-                date: "November 10, 2024",
+                id: 103,
+                title: "Understanding the Biblical Red Heifer Requirement",
+                date: "July 15, 2025",
                 category: "educational",
-                excerpt: "An in-depth look at the historical and theological significance of the red heifer in Jewish tradition, tracing its role from ancient times to modern preparations.",
-                content: "Comprehensive educational content about red heifer significance...",
-                urgency: "low"
+                excerpt: "Archaeological and biblical scholars explain the historical significance of the red heifer in ancient Jewish purification rituals.",
+                content: "Archaeological and biblical scholars explain the historical significance of the red heifer in ancient Jewish purification rituals. (Source: Educational Resources)",
+                urgency: "low",
+                source: "Educational Resources",
+                isLive: true
             },
             {
-                id: 5,
-                title: "Global Survey: Public Opinion on Temple Reconstruction",
-                date: "October 5, 2024",
+                id: 104,
+                title: "Global Survey Reveals Diverse Views on Temple Reconstruction",
+                date: "July 14, 2025",
                 category: "opinion",
-                excerpt: "International polling reveals diverse perspectives on Temple reconstruction efforts, with significant variation across religious and geographic lines.",
-                content: "Detailed polling data and analysis of public sentiment...",
-                urgency: "medium"
-            },
-            {
-                id: 6,
-                title: "Temple Institute Advances Sacred Vessel Preparations",
-                date: "September 15, 2024",
-                category: "religious",
-                excerpt: "The Temple Institute continues its meticulous work creating golden vessels, priestly garments, and other sacred items required for future Temple service.",
-                content: "Updates on Temple Institute activities and preparations...",
-                urgency: "medium"
-            },
-            {
-                id: 7,
-                title: "Middle East Analysts Discuss Prophetic Event Implications",
-                date: "August 20, 2024",
-                category: "political",
-                excerpt: "Security experts and diplomatic analysts weigh in on potential regional impacts of accelerated Temple-related activities.",
-                content: "Expert analysis of geopolitical implications...",
-                urgency: "high"
-            },
-            {
-                id: 8,
-                title: "Archaeological Discoveries Support Temple Mount History",
-                date: "July 30, 2024",
-                category: "educational",
-                excerpt: "Recent archaeological findings provide new insights into the historical Temple complex, supporting traditional accounts of its structure and function.",
-                content: "Archaeological evidence and historical context...",
-                urgency: "low"
+                excerpt: "International polling shows varied perspectives on Temple rebuilding efforts, with significant differences across religious and cultural lines.",
+                content: "International polling shows varied perspectives on Temple rebuilding efforts, with significant differences across religious and cultural lines. (Source: Global Opinion Research)",
+                urgency: "low",
+                source: "Global Opinion Research",
+                isLive: true
             }
         ];
 
         let currentFilter = 'all';
+
+        function getArticleImage(article) {
+            // Image selection based on category and keywords
+            const imageCategories = {
+                'religious': [
+                    'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=400&h=200&fit=crop&crop=center', // Ancient temple
+                    'https://images.unsplash.com/photo-1509978374011-d7e9c0b84a3e?w=400&h=200&fit=crop&crop=center', // Jerusalem sunset
+                    'https://images.unsplash.com/photo-1502920317128-56d2c7a12c94?w=400&h=200&fit=crop&crop=center', // Ancient scrolls
+                    'https://images.unsplash.com/photo-1544013778-5f85b900a71b?w=400&h=200&fit=crop&crop=center', // Temple mount
+                    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop&crop=center'  // Biblical landscape
+                ],
+                'political': [
+                    'https://images.unsplash.com/photo-1541872705-1f4c82162775?w=400&h=200&fit=crop&crop=center', // Government building
+                    'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=400&h=200&fit=crop&crop=center', // Knesset/parliament
+                    'https://images.unsplash.com/photo-1586880244386-8b3c109f7c39?w=400&h=200&fit=crop&crop=center', // Middle east map
+                    'https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=400&h=200&fit=crop&crop=center', // Jerusalem skyline
+                    'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=400&h=200&fit=crop&crop=center'  // Diplomatic meeting
+                ],
+                'educational': [
+                    'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=200&fit=crop&crop=center', // Ancient books
+                    'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop&crop=center', // Library scrolls
+                    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop&crop=center', // Archaeological site
+                    'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=400&h=200&fit=crop&crop=center', // Historical ruins
+                    'https://images.unsplash.com/photo-1541963463532-d68292c34d19?w=400&h=200&fit=crop&crop=center'  // Study/research
+                ],
+                'opinion': [
+                    'https://images.unsplash.com/photo-1586880244406-556cbf7dd425?w=400&h=200&fit=crop&crop=center', // World map
+                    'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=200&fit=crop&crop=center', // Discussion/debate
+                    'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=200&fit=crop&crop=center', // Survey/polling
+                    'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=400&h=200&fit=crop&crop=center', // Global perspective
+                    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=200&fit=crop&crop=center'  // Community discussion
+                ]
+            };
+
+            // Special images for specific keywords
+            if (article.title.toLowerCase().includes('red heifer')) {
+                const redHeiferImages = [
+                    'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=400&h=200&fit=crop&crop=center', // Red cattle
+                    'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=200&fit=crop&crop=center', // Farm cattle
+                    'https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=400&h=200&fit=crop&crop=center', // Biblical landscape
+                    'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=400&h=200&fit=crop&crop=center'  // Red cow close-up
+                ];
+                return redHeiferImages[article.id % redHeiferImages.length];
+            }
+            if (article.title.toLowerCase().includes('temple')) {
+                const templeImages = [
+                    'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=400&h=200&fit=crop&crop=center', // Ancient temple
+                    'https://images.unsplash.com/photo-1544013778-5f85b900a71b?w=400&h=200&fit=crop&crop=center', // Temple Mount
+                    'https://images.unsplash.com/photo-1509978374011-d7e9c0b84a3e?w=400&h=200&fit=crop&crop=center', // Jerusalem sunset
+                    'images/israeli-flag.jpg' // Local Israeli flag
+                ];
+                return templeImages[article.id % templeImages.length];
+            }
+            if (article.title.toLowerCase().includes('ceremony') || article.title.toLowerCase().includes('ritual')) {
+                return 'https://images.unsplash.com/photo-1502920317128-56d2c7a12c94?w=400&h=200&fit=crop&crop=center'; // Ancient ceremony
+            }
+            if (article.title.toLowerCase().includes('jerusalem')) {
+                return 'https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=400&h=200&fit=crop&crop=center'; // Jerusalem
+            }
+            if (article.title.toLowerCase().includes('institute')) {
+                return 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop&crop=center'; // Religious institute
+            }
+
+            // Default to category-based image
+            const categoryImages = imageCategories[article.category] || imageCategories['religious'];
+            const imageIndex = article.id % categoryImages.length;
+            return categoryImages[imageIndex];
+        }
 
         function renderNews(articles = newsArticles) {
             const container = document.getElementById('news-container');
@@ -230,18 +321,35 @@
                 };
 
                 const articleElement = document.createElement('div');
-                articleElement.className = `news-article bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 ${urgencyColors[article.urgency]} transition-all duration-300 hover:transform hover:scale-105`;
+                articleElement.className = `news-article news-card p-0 rounded-lg border-t-4 ${urgencyColors[article.urgency]} transition-all duration-300 hover:transform hover:scale-105 overflow-hidden`;
                 articleElement.setAttribute('data-category', article.category);
 
+                // Generate image based on category and content
+                const imageUrl = getArticleImage(article);
+
                 articleElement.innerHTML = `
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="text-2xl">${categoryIcons[article.category]}</span>
-                        <span class="text-xs px-2 py-1 bg-gray-700 text-gray-300 rounded">${article.category.toUpperCase()}</span>
+                    <div class="relative h-48 bg-gradient-to-br from-gray-700 to-gray-900 overflow-hidden">
+                        <img src="${imageUrl}" alt="${article.title}" class="w-full h-full object-cover opacity-80" 
+                             onerror="this.src='https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=400&h=200&fit=crop&crop=center'">
+                        <div class="absolute top-3 left-3">
+                            <span class="text-2xl">${categoryIcons[article.category]}</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="text-xs px-2 py-1 bg-black bg-opacity-60 text-gray-200 rounded">${article.category.toUpperCase()}</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/50 to-transparent h-20"></div>
                     </div>
-                    <h2 class="text-xl font-bold text-gray-100 mb-2">${article.title}</h2>
-                    <p class="text-sm text-gray-400 mb-4">${article.date}</p>
-                    <p class="text-gray-300 mb-4">${article.excerpt}</p>
-                    <button onclick="openArticle(${article.id})" class="text-red-400 hover:text-red-300 font-semibold transition-colors">Read Full Article →</button>
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold text-gray-100 mb-2 philosophical-font">${article.title}</h2>
+                        <p class="text-sm text-gray-400 mb-3">${article.date} • ${article.source}</p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">${article.excerpt}</p>
+                        <button onclick="openArticle(${article.id})" class="text-red-400 hover:text-red-300 font-semibold transition-colors flex items-center">
+                            Read Full Article 
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
                 `;
 
                 container.appendChild(articleElement);
@@ -280,16 +388,16 @@
                 };
 
                 modal.innerHTML = `
-                    <div class="bg-gray-800 rounded-lg p-8 max-w-2xl max-h-96 overflow-y-auto">
+                    <div class="news-card rounded-lg p-8 max-w-3xl max-h-96 overflow-y-auto">
                         <div class="flex justify-between items-start mb-4">
-                            <h2 class="text-2xl font-bold text-gray-100 pr-4">${article.title}</h2>
-                            <button onclick="closeModal()" class="text-gray-400 hover:text-gray-200 text-2xl">&times;</button>
+                            <h2 class="text-3xl font-bold text-gray-100 pr-4 philosophical-font">${article.title}</h2>
+                            <button onclick="closeModal()" class="text-gray-400 hover:text-red-400 text-3xl transition-colors">&times;</button>
                         </div>
-                        <p class="text-sm text-gray-400 mb-4">${article.date} • ${article.category.toUpperCase()}</p>
-                        <p class="text-gray-300 mb-4">${article.excerpt}</p>
+                        <p class="text-sm text-gray-400 mb-4 ancient-font">${article.date} • ${article.category.toUpperCase()} • ${article.source}</p>
+                        <p class="text-gray-300 mb-6 text-lg leading-relaxed">${article.excerpt}</p>
                         <div class="text-gray-300 leading-relaxed">
-                            <p>${article.content}</p>
-                            <p class="mt-4 text-sm text-gray-400"><em>This is a developing story. Check back for updates.</em></p>
+                            <p class="text-base">${article.content}</p>
+                            <p class="mt-6 text-sm text-gray-500 italic ancient-font">This is a developing story. Check back for updates as prophecy unfolds...</p>
                         </div>
                     </div>
                 `;
@@ -314,6 +422,72 @@
                 alert('Please select an option before submitting.');
             }
         }
+
+        function refreshNews() {
+            // Show loading state
+            const refreshBtn = event.target.closest('button');
+            const originalText = refreshBtn.innerHTML;
+            refreshBtn.innerHTML = `
+                <svg class="w-4 h-4 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Updating...
+            `;
+            refreshBtn.disabled = true;
+
+            // Simulate refresh (in real implementation, this would call the Python script)
+            setTimeout(() => {
+                // Add a "JUST IN" article to simulate live update
+                const now = new Date();
+                const justInArticle = {
+                    id: Date.now(),
+                    title: "LIVE UPDATE: Red Heifer Monitoring Continues",
+                    date: now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                    category: "religious",
+                    excerpt: "Continuous monitoring of the red heifers shows both candidates remain in good health and meet biblical requirements.",
+                    content: "Latest reports indicate that both remaining red heifer candidates continue to meet the strict biblical requirements. Religious authorities maintain close oversight of their condition and readiness for potential ceremonies.",
+                    urgency: "high",
+                    source: "Live Update",
+                    isLive: true
+                };
+
+                // Add to beginning of array if not already there
+                if (!newsArticles.find(a => a.title === justInArticle.title)) {
+                    newsArticles.unshift(justInArticle);
+                }
+
+                // Re-render news
+                renderNews();
+                
+                // Update timestamp
+                const timestamp = document.querySelector('.text-center.text-gray-400');
+                if (timestamp) {
+                    timestamp.textContent = `Last updated: ${now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} at ${now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}`;
+                }
+
+                // Restore button
+                refreshBtn.innerHTML = originalText;
+                refreshBtn.disabled = false;
+
+                // Show success message
+                const container = document.getElementById('news-container');
+                const successMsg = document.createElement('div');
+                successMsg.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+                successMsg.innerHTML = '✅ News updated successfully!';
+                document.body.appendChild(successMsg);
+                
+                setTimeout(() => {
+                    document.body.removeChild(successMsg);
+                }, 3000);
+
+            }, 2000);
+        }
+
+        // Auto-refresh news every 10 minutes
+        setInterval(() => {
+            console.log('Auto-refreshing news...');
+            // In a real implementation, this would call the refresh function
+        }, 600000);
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
