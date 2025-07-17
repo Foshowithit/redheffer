@@ -256,15 +256,13 @@
             .hero-content {
                 z-index: 10;
                 position: relative;
-                background: rgba(0, 0, 0, 0.90);
-                border-radius: 25px;
-                padding: 2.5rem 1.8rem;
-                margin: 1rem;
-                backdrop-filter: blur(20px);
-                border: 2px solid rgba(255, 0, 0, 0.4);
-                box-shadow: 
-                    0 15px 35px rgba(0, 0, 0, 0.8),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                background: transparent;
+                border-radius: 0;
+                padding: 2rem 1rem;
+                margin: 0;
+                backdrop-filter: none;
+                border: none;
+                box-shadow: none;
                 /* Ensure content is always above other elements */
                 isolation: isolate;
             }
@@ -272,21 +270,33 @@
             .hero-title {
                 font-size: clamp(1.8rem, 7vw, 3.5rem) !important;
                 text-shadow: 
-                    2px 2px 4px rgba(0, 0, 0, 1), 
-                    0 0 20px rgba(255, 0, 0, 0.9),
-                    0 0 40px rgba(255, 0, 0, 0.5) !important;
+                    3px 3px 6px rgba(0, 0, 0, 1), 
+                    0 0 30px rgba(255, 0, 0, 1),
+                    0 0 60px rgba(255, 0, 0, 0.8),
+                    2px 2px 0px rgba(0, 0, 0, 1) !important;
                 margin-bottom: 1rem !important;
                 line-height: 1.1 !important;
+                color: #ffffff !important;
             }
             
             .hero-subtitle {
                 font-size: clamp(0.9rem, 3.5vw, 1.3rem) !important;
                 text-shadow: 
-                    1px 1px 2px rgba(0, 0, 0, 1),
-                    0 0 10px rgba(255, 215, 0, 0.8) !important;
+                    2px 2px 4px rgba(0, 0, 0, 1),
+                    0 0 20px rgba(255, 215, 0, 1),
+                    1px 1px 0px rgba(0, 0, 0, 1) !important;
                 margin-bottom: 2rem !important;
                 line-height: 1.4 !important;
                 font-weight: 400 !important;
+                color: #ffd700 !important;
+            }
+            
+            .hero-description {
+                text-shadow: 
+                    2px 2px 4px rgba(0, 0, 0, 1),
+                    1px 1px 0px rgba(0, 0, 0, 1) !important;
+                color: #ffffff !important;
+                font-weight: 500 !important;
             }
             
             .cta-buttons {
@@ -358,9 +368,9 @@
         /* Extra small mobile devices */
         @media (max-width: 480px) {
             .hero-content {
-                margin: 0.5rem;
+                margin: 0;
                 padding: 1.5rem 1rem;
-                border-radius: 15px;
+                border-radius: 0;
             }
             
             .hero-title {
