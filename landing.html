@@ -42,52 +42,38 @@
             z-index: 10;
         }
 
-        /* Background Animation */
-        .bg-animation {
+        /* Background Video */
+        .video-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 0, 0, 0.05) 0%, transparent 50%);
-            animation: backgroundShift 20s ease-in-out infinite;
-            z-index: 1;
+            overflow: hidden;
+            z-index: -1;
         }
-
-        @keyframes backgroundShift {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(180deg); }
-        }
-
-        /* Floating Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .particle {
+        
+        .background-video {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--primary-red);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-            opacity: 0.7;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw; /* 16:9 aspect ratio */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 16:9 aspect ratio */
+            transform: translate(-50%, -50%);
+            pointer-events: none;
         }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(1px);
+            z-index: 1;
         }
 
         /* Header */
@@ -176,11 +162,11 @@
             font-family: 'Orbitron', monospace;
             font-size: clamp(3rem, 8vw, 8rem);
             font-weight: 900;
-            color: var(--primary-red);
+            color: #005f9e;
             text-shadow: 
-                0 0 20px rgba(255, 0, 0, 0.5),
-                0 0 40px rgba(255, 0, 0, 0.3),
-                0 0 60px rgba(255, 0, 0, 0.2);
+                0 0 20px rgba(0, 95, 158, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.8),
+                0 0 60px rgba(0, 95, 158, 0.2);
             margin-bottom: 2rem;
             animation: titlePulse 3s ease-in-out infinite;
         }
@@ -277,6 +263,13 @@
 
         .cta-button.secondary:hover {
             box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .click-anywhere {
+            margin-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
         }
 
         /* Stats Section */
@@ -469,18 +462,77 @@
             text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
 
+        .heifer-image {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            z-index: 101;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
+
+            .mobile-nav-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 30px;
+                height: 25px;
+                cursor: pointer;
+                z-index: 101;
+            }
+
+            .mobile-nav-toggle span {
+                width: 100%;
+                height: 3px;
+                background: var(--primary-red);
+                transition: all 0.3s ease;
+            }
+
+            .mobile-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.98);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.5s ease;
+                z-index: 100;
+            }
+
+            .mobile-nav.active {
+                left: 0;
+            }
+
+            .mobile-nav ul {
+                list-style: none;
+                text-align: center;
+            }
+
+            .mobile-nav ul li {
+                margin: 2rem 0;
+            }
+
+            .mobile-nav ul a {
+                color: var(--text-primary);
+                text-decoration: none;
+                font-size: 2rem;
+                font-weight: 700;
+            }
             
             .hero-title {
-                font-size: 4rem;
+                font-size: 3rem;
             }
             
             .hero-subtitle {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
             
             .cta-buttons {
@@ -498,6 +550,32 @@
             
             .countdown-number {
                 font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .countdown-item {
+                min-width: 50px;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
             }
         }
 
@@ -539,11 +617,18 @@
     </style>
 </head>
 <body>
-    <!-- Background Animation -->
-    <div class="bg-animation"></div>
-    
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
+    <!-- Background Video -->
+    <div class="video-background">
+        <iframe 
+            src="https://www.youtube.com/embed/g3uRc8WiSnQ?autoplay=1&mute=1&loop=1&playlist=g3uRc8WiSnQ&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=1&volume=0"
+            frameborder="0" 
+            allowfullscreen
+            allow="autoplay; encrypted-media"
+            class="background-video"
+            muted>
+        </iframe>
+        <div class="video-overlay"></div>
+    </div>
 
     <!-- Header -->
     <header>
@@ -555,8 +640,24 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="mobile-nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </header>
+
+    <!-- Heifer Image -->
+    <img src="assets/hef.png" class="heifer-image">
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -571,6 +672,9 @@
                 <div class="cta-buttons">
                     <a href="index.html" class="cta-button">ENTER SITE</a>
                     <a href="prophecy.html" class="cta-button secondary">TRACK PROPHECY</a>
+                </div>
+                <div class="click-anywhere">
+                    <p>Click anywhere to enter</p>
                 </div>
             </div>
         </div>
@@ -679,6 +783,7 @@
         // Particle System
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
             const particleCount = 50;
             
             for (let i = 0; i < particleCount; i++) {
@@ -723,9 +828,14 @@
         // Number Animation
         function animateNumber(element, targetNumber) {
             const currentNumber = parseInt(element.textContent);
+            if (isNaN(currentNumber)) {
+                element.textContent = targetNumber;
+                return;
+            }
             const increment = targetNumber > currentNumber ? 1 : -1;
             const duration = 1000;
             const steps = Math.abs(targetNumber - currentNumber);
+            if (steps === 0) return;
             const stepTime = duration / steps;
             
             let current = currentNumber;
@@ -809,6 +919,19 @@
             handleScrollAnimations();
             initSmoothScrolling();
             enhanceGlitch();
+
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+
+            mobileNavToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.mobile-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                });
+            });
             
             // Update countdown every minute
             setInterval(updateCountdown, 60000);

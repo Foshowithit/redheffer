@@ -7,51 +7,73 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Uncial+Antiqua&family=Philosopher:wght@400;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-blue: #0038B8;
+            --secondary-blue: #4A90E2;
+            --dark-blue: #002B8C;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #2c3e50;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #0038B8;
+            --text-secondary: #4A90E2;
+            --text-muted: #6c757d;
+        }
+        
         body {
             font-family: 'Crimson Text', 'Times New Roman', serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            color: var(--text-primary);
         }
+        
         .title-font {
             font-family: 'Cinzel', serif;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
+        
         .ancient-font {
             font-family: 'Uncial Antiqua', cursive;
         }
+        
         .philosophical-font {
             font-family: 'Philosopher', sans-serif;
         }
-        .apocalyptic-glow {
-            text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+        
+        .israel-glow {
+            text-shadow: 0 0 10px rgba(0, 56, 184, 0.3);
         }
+        
         .hero-title {
             font-family: 'Cinzel', serif;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            color: var(--primary-blue);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="bg-white text-blue-900">
 
     <!-- Navigation Bar -->
-    <nav class="bg-gray-800 p-4">
+    <nav class="bg-blue-800 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-red-500 title-font apocalyptic-glow">Red Heifer Watch</a>
+            <a href="index.html" class="text-2xl font-bold text-white title-font israel-glow">Red Heifer Watch</a>
             <div class="space-x-4">
-                <a href="news.html" class="text-gray-300 hover:text-red-400">News</a>
-                <a href="prophecy.html" class="text-gray-300 hover:text-red-400">Prophecy Tracker</a>
-                <a href="education.html" class="text-gray-300 hover:text-red-400">Education</a>
-                <a href="about.html" class="text-gray-300 hover:text-red-400">FAQ / About</a>
-                <a href="contact.html" class="text-gray-300 hover:text-red-400">Contact</a>
+                <a href="news.html" class="text-blue-100 hover:text-white">News</a>
+                <a href="prophecy.html" class="text-blue-100 hover:text-white">Prophecy Tracker</a>
+                <a href="education.html" class="text-blue-100 hover:text-white">Education</a>
+                <a href="about.html" class="text-blue-100 hover:text-white">FAQ / About</a>
+                <a href="contact.html" class="text-blue-100 hover:text-white">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section with Video -->
-    <header class="relative bg-cover bg-center h-auto py-16" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);">
+    <header class="relative bg-cover bg-center h-auto py-16" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h1 class="text-5xl md:text-7xl font-bold leading-tight hero-title cyberpunk-glow mb-6" style="color: var(--text-primary);">Watch the Prophecy Unfold in Real Time</h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8">Tracking the biblical red heifer and Third Temple prophecies as they develop</p>
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight hero-title israel-glow mb-6">Watch the Prophecy Unfold in Real Time</h1>
+                <p class="text-xl md:text-2xl text-blue-600 mb-8">Tracking the biblical red heifer and Third Temple prophecies as they develop</p>
             </div>
             
             <!-- Featured Video -->
@@ -59,14 +81,14 @@
                 <div class="relative w-full" style="padding-bottom: 56.25%; height: 0;">
                     <iframe 
                         class="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl"
-                        src="https://www.youtube.com/embed/l1bd9hsPJL8?si=lsyKdFlALFdCUiO4" 
+                        src="https://www.youtube.com/embed/VATkIYz0eZ4?si=XkzirnHbBTt4BIQV" 
                         title="Red Heifer Watch - Prophecy Update" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen>
                     </iframe>
                 </div>
-                <p class="text-center text-gray-400 mt-4 text-lg">Latest prophecy developments and analysis</p>
+                <p class="text-center text-blue-500 mt-4 text-lg">Latest prophecy developments and analysis</p>
             </div>
         </div>
     </header>
@@ -75,30 +97,30 @@
     <section class="py-16">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- News Block -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-red-500">
-                <h2 class="text-3xl font-bold text-gold-400 mb-4 philosophical-font">Latest News</h2>
-                <p class="text-gray-300">Stay updated with the most recent developments concerning the Red Heifer, Temple Institute activities, and related events.</p>
-                <a href="news.html" class="mt-4 inline-block text-red-400 hover:text-red-300 font-semibold">Read More &rarr;</a>
+            <div class="bg-blue-50 p-6 rounded-lg shadow-lg border-t-4 border-blue-500">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4 philosophical-font">Latest News</h2>
+                <p class="text-blue-700">Stay updated with the most recent developments concerning the Red Heifer, Temple Institute activities, and related events.</p>
+                <a href="news.html" class="mt-4 inline-block text-blue-600 hover:text-blue-500 font-semibold">Read More &rarr;</a>
             </div>
 
             <!-- Prophecy Tracker Block -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-red-500">
-                <h2 class="text-3xl font-bold text-gold-400 mb-4 philosophical-font">Prophecy Tracker</h2>
-                <p class="text-gray-300">Monitor key prophetic milestones and real-world events aligning with ancient prophecies.</p>
-                <a href="prophecy.html" class="mt-4 inline-block text-red-400 hover:text-red-300 font-semibold">View Tracker &rarr;</a>
+            <div class="bg-blue-50 p-6 rounded-lg shadow-lg border-t-4 border-blue-500">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4 philosophical-font">Prophecy Tracker</h2>
+                <p class="text-blue-700">Monitor key prophetic milestones and real-world events aligning with ancient prophecies.</p>
+                <a href="prophecy.html" class="mt-4 inline-block text-blue-600 hover:text-blue-500 font-semibold">View Tracker &rarr;</a>
             </div>
 
             <!-- FAQ / About Block -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-red-500">
-                <h2 class="text-3xl font-bold text-gold-400 mb-4 philosophical-font">FAQ / About</h2>
-                <p class="text-gray-300">Find answers to frequently asked questions and learn more about the purpose of this site.</p>
-                <a href="about.html" class="mt-4 inline-block text-red-400 hover:text-red-300 font-semibold">Learn More &rarr;</a>
+            <div class="bg-blue-50 p-6 rounded-lg shadow-lg border-t-4 border-blue-500">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4 philosophical-font">FAQ / About</h2>
+                <p class="text-blue-700">Find answers to frequently asked questions and learn more about the purpose of this site.</p>
+                <a href="about.html" class="mt-4 inline-block text-blue-600 hover:text-blue-500 font-semibold">Learn More &rarr;</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 p-8 text-center text-gray-400">
+    <footer class="bg-blue-800 p-8 text-center text-blue-100">
         <p>&copy; 2025 Red Heifer Watch. All rights reserved.</p>
         <p class="mt-2">Encouraging respectful discussion and informed understanding.</p>
     </footer>

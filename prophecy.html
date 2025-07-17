@@ -5,45 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Heifer Watch - Prophecy Tracker</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Uncial+Antiqua&family=Philosopher:wght@400;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-red: #ff0000;
-            --secondary-red: #cc0000;
-            --dark-red: #990000;
-            --gold: #ffd700;
-            --dark-gold: #b8860b;
-            --bg-primary: #000000;
-            --bg-secondary: #0a0a0a;
-            --bg-tertiary: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #cccccc;
-            --text-muted: #888888;
+            --primary-blue: #0038B8;
+            --secondary-blue: #4A90E2;
+            --dark-blue: #002B8C;
+            --light-blue: #87CEEB;
+            --white: #ffffff;
+            --cream: #fefcf8;
+            --cream-light: #faf8f4;
+            --cream-dark: #f5f3ef;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #0038B8;
+            --text-secondary: #4A90E2;
+            --text-muted: #6c757d;
         }
         
         body {
-            font-family: 'Exo 2', sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            font-family: 'Crimson Text', 'Times New Roman', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-light) 50%, var(--cream) 100%);
             color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .title-font {
-            font-family: 'Orbitron', monospace;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
-        .cyberpunk-glow {
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.3);
+        .ancient-font {
+            font-family: 'Uncial Antiqua', cursive;
+        }
+        
+        .philosophical-font {
+            font-family: 'Philosopher', sans-serif;
+        }
+        
+        .israel-glow {
+            text-shadow: 
+                0 0 20px rgba(0, 56, 184, 0.6), 
+                0 0 40px rgba(0, 56, 184, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Enhanced navigation */
+        nav {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 56, 184, 0.95);
+        }
+        
+        nav a {
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Improved main content */
+        main h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        main h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0038B8, transparent);
         }
         .prophecy-card {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            border: 1px solid #334155;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #ffffff, var(--cream-light));
+            border: 2px solid #4A90E2;
+            box-shadow: 0 8px 32px rgba(0, 56, 184, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
         }
         .prophecy-card:hover {
-            box-shadow: 0 12px 40px rgba(239, 68, 68, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 56, 184, 0.25);
             transform: translateY(-2px);
+            border-color: rgba(0, 56, 184, 0.7);
+            background: linear-gradient(145deg, #ffffff, var(--cream));
+        }
+        
+        /* Enhanced status indicators */
+        .status-indicator {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .status-viable {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 56, 184, 0.5);
+            background: #0038B8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+        
+        .status-ready {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+            background: #4A90E2;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+        
+        .status-timing {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 56, 184, 0.5);
+            background: #0038B8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            nav .space-x-6 {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav .space-x-6 a {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+            
+            main h1 {
+                font-size: clamp(1.8rem, 8vw, 3rem);
+                margin-bottom: 2rem;
+            }
+            
+            .prophecy-card {
+                margin-bottom: 1rem;
+            }
+            
+            .status-indicator {
+                font-size: 1rem;
+            }
+            
+            .grid {
+                gap: 1rem;
+            }
         }
         .pulse-animation {
             animation: pulse 2s infinite;
@@ -57,8 +177,8 @@
             font-family: 'Courier New', monospace;
             font-size: 1.5rem;
             font-weight: bold;
-            color: #ef4444;
-            text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+            color: #0038B8;
+            text-shadow: 0 0 10px rgba(0, 56, 184, 0.5);
         }
         .live-indicator {
             position: relative;
@@ -71,114 +191,120 @@
             left: -15px;
             width: 8px;
             height: 8px;
-            background: #10b981;
+            background: #0038B8;
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="text-blue-900" style="background: linear-gradient(135deg, var(--cream) 0%, var(--cream-light) 50%, var(--cream) 100%);">
 
     <!-- Navigation Bar -->
-    <nav class="bg-gray-800 p-4">
+    <nav class="bg-blue-800 p-4 border-b border-blue-700">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-red-500 title-font apocalyptic-glow">Red Heifer Watch</a>
-            <div class="space-x-4">
-                <a href="news.html" class="text-gray-300 hover:text-red-400">News</a>
-                <a href="prophecy.html" class="text-gray-300 hover:text-red-400">Prophecy Tracker</a>
-                <a href="education.html" class="text-gray-300 hover:text-red-400">Education</a>
-                <a href="about.html" class="text-gray-300 hover:text-red-400">FAQ / About</a>
-                <a href="contact.html" class="text-gray-300 hover:text-red-400">Contact</a>
+            <a href="index.html" class="text-2xl font-bold text-white title-font israel-glow">Red Heifer Watch</a>
+            <div class="space-x-6">
+                <a href="news.html" class="text-blue-100 hover:text-white font-medium transition-colors duration-200 text-sm uppercase tracking-wider">News</a>
+                <a href="prophecy.html" class="text-white font-medium text-sm uppercase tracking-wider border-b-2 border-white pb-1">Prophecy Tracker</a>
+                <a href="education.html" class="text-blue-100 hover:text-white font-medium transition-colors duration-200 text-sm uppercase tracking-wider">Education</a>
+                <a href="about.html" class="text-blue-100 hover:text-white font-medium transition-colors duration-200 text-sm uppercase tracking-wider">FAQ / About</a>
+                <a href="contact.html" class="text-blue-100 hover:text-white font-medium transition-colors duration-200 text-sm uppercase tracking-wider">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content - Prophecy Tracker -->
     <main class="container mx-auto py-16 px-4">
-        <h1 class="text-5xl font-bold text-red-500 mb-8 text-center title-font apocalyptic-glow">Prophecy Tracker: Key Milestones</h1>
+        <div class="bg-cream-light p-6 rounded-xl mb-8 border border-blue-300 shadow-sm">
+        <h1 class="text-5xl font-bold text-blue-600 mb-12 text-center title-font israel-glow">Prophecy Tracker: Key Milestones</h1>
         
         <!-- Live Status Panel -->
-        <div class="bg-gray-800 p-6 rounded-lg mb-8 border-l-4 border-green-500">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-2xl font-bold text-green-400 live-indicator">Live Status</h2>
-                <div class="text-sm text-gray-400">
+        <div class="bg-cream p-8 rounded-lg mb-8 border-2 border-blue-400 shadow-lg">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-3xl font-bold text-blue-800 live-indicator">Live Status</h2>
+                <div class="text-sm text-blue-800 bg-cream-dark px-4 py-2 rounded-full border border-blue-300">
                     <span id="live-time">Loading...</span> | Auto-refresh: <span id="refresh-countdown">60</span>s
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-gray-700 p-4 rounded">
-                    <h3 class="text-lg font-semibold text-gray-100 mb-2">Red Heifers Status</h3>
-                    <p class="text-2xl font-bold text-green-400">2 VIABLE</p>
-                    <p class="text-sm text-gray-400">Last verified: <span id="heifer-check">Loading...</span></p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-cream-light p-6 rounded-lg border-2 border-blue-400 hover:border-blue-600 transition-colors duration-200 hover:shadow-md">
+                    <h3 class="text-xl font-semibold text-blue-900 mb-3 font-medium">Red Heifers Status</h3>
+                    <p class="text-2xl font-bold status-indicator status-viable mb-2">2 VIABLE</p>
+                    <p class="text-sm text-blue-800 font-medium">Last verified: <span id="heifer-check">Loading...</span></p>
                 </div>
-                <div class="bg-gray-700 p-4 rounded">
-                    <h3 class="text-lg font-semibold text-gray-100 mb-2">Temple Preparation</h3>
-                    <p class="text-2xl font-bold text-yellow-400">90% READY</p>
-                    <p class="text-sm text-gray-400">Sacred vessels completed</p>
+                <div class="bg-cream-light p-6 rounded-lg border-2 border-blue-400 hover:border-blue-600 transition-colors duration-200 hover:shadow-md">
+                    <h3 class="text-xl font-semibold text-blue-900 mb-3 font-medium">Temple Preparation</h3>
+                    <p class="text-2xl font-bold status-indicator status-ready mb-2">90% READY</p>
+                    <p class="text-sm text-blue-800 font-medium">Sacred vessels completed</p>
                 </div>
-                <div class="bg-gray-700 p-4 rounded">
-                    <h3 class="text-lg font-semibold text-gray-100 mb-2">Next Milestone</h3>
-                    <p class="text-lg font-bold text-red-400">CEREMONY TIMING</p>
-                    <p class="text-sm text-gray-400">Awaiting religious approval</p>
+                <div class="bg-cream-light p-6 rounded-lg border-2 border-blue-400 hover:border-blue-600 transition-colors duration-200 hover:shadow-md">
+                    <h3 class="text-xl font-semibold text-blue-900 mb-3 font-medium">Next Milestone</h3>
+                    <p class="text-lg font-bold status-indicator status-timing mb-2">CEREMONY TIMING</p>
+                    <p class="text-sm text-blue-800 font-medium">Awaiting religious approval</p>
                 </div>
             </div>
         </div>
 
         <!-- Prophecy Countdown Section -->
-        <div class="bg-gray-800 p-6 rounded-lg mb-8 border-l-4 border-red-500">
-            <h2 class="text-2xl font-bold text-red-400 mb-4 text-center">Potential Timeline Window</h2>
-            <div class="text-center mb-6">
-                <p class="text-gray-300 mb-2">Days since red heifers arrived in Israel:</p>
-                <div class="countdown-timer" id="days-since">Loading...</div>
+        <div class="bg-cream p-8 rounded-lg mb-8 border-2 border-blue-400 shadow-lg">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center title-font">Potential Timeline Window</h2>
+            <div class="text-center mb-8">
+                <p class="text-blue-800 mb-3 text-lg font-medium">Days since red heifers arrived in Israel:</p>
+                <div class="countdown-timer bg-cream-light p-4 rounded-lg inline-block border-2 border-blue-300" id="days-since">Loading...</div>
             </div>
             <div class="text-center">
-                <p class="text-gray-300 mb-2">Estimated optimal window (if conditions align):</p>
-                <div class="countdown-timer" id="optimal-window">Loading...</div>
+                <p class="text-blue-800 mb-3 text-lg font-medium">Estimated optimal window (if conditions align):</p>
+                <div class="countdown-timer bg-cream-light p-4 rounded-lg inline-block border-2 border-blue-300" id="optimal-window">Loading...</div>
             </div>
         </div>
 
         <!-- Progress Overview -->
-        <div class="bg-gray-800 p-8 rounded-lg mb-12">
-            <h2 class="text-3xl font-bold text-red-400 mb-6 text-center title-font apocalyptic-glow">Overall Progress</h2>
+        <div class="bg-cream p-8 rounded-lg mb-12 border-2 border-blue-400 shadow-lg">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center title-font israel-glow">Overall Progress</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div class="text-center">
                     <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span class="text-2xl">✓</span>
                     </div>
-                    <h3 class="font-semibold text-gray-100">Red Heifers</h3>
-                    <p class="text-sm text-gray-400">Born & Transported</p>
+                    <h3 class="font-semibold text-blue-800">Red Heifers</h3>
+                    <p class="text-sm text-blue-600">Born & Transported</p>
                 </div>
                 <div class="text-center">
                     <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span class="text-2xl">⚡</span>
                     </div>
-                    <h3 class="font-semibold text-gray-100">Temple Prep</h3>
-                    <p class="text-sm text-gray-400">In Progress</p>
+                    <h3 class="font-semibold text-blue-800">Temple Prep</h3>
+                    <p class="text-sm text-blue-600">In Progress</p>
                 </div>
                 <div class="text-center">
-                    <div class="w-20 h-20 bg-gray-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <div class="w-20 h-20 bg-blue-300 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span class="text-2xl">⏳</span>
                     </div>
-                    <h3 class="font-semibold text-gray-100">Political Alignment</h3>
-                    <p class="text-sm text-gray-400">Developing</p>
+                    <h3 class="font-semibold text-blue-800">Political Alignment</h3>
+                    <p class="text-sm text-blue-600">Developing</p>
                 </div>
                 <div class="text-center">
-                    <div class="w-20 h-20 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <div class="w-20 h-20 bg-blue-200 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span class="text-2xl">○</span>
                     </div>
-                    <h3 class="font-semibold text-gray-100">Ceremony</h3>
-                    <p class="text-sm text-gray-400">Awaiting</p>
+                    <h3 class="font-semibold text-blue-800">Ceremony</h3>
+                    <p class="text-sm text-blue-600">Awaiting</p>
                 </div>
             </div>
             <div class="mt-8">
-                <div class="w-full bg-gray-700 rounded-full h-3">
+                <div class="w-full bg-blue-200 rounded-full h-3">
                     <div class="bg-gradient-to-r from-green-500 to-yellow-500 h-3 rounded-full" style="width: 35%"></div>
                 </div>
-                <p class="text-center text-gray-400 mt-2">Estimated Progress: 35%</p>
+                <p class="text-center text-blue-600 mt-2">Estimated Progress: 35%</p>
             </div>
         </div>
 
-        <div class="relative border-l-4 border-gold-400 ml-4 md:ml-12 lg:ml-24">
+        </div>
+        
+        <!-- Timeline Section -->
+        <div class="bg-cream p-8 rounded-lg border-2 border-blue-400 shadow-lg">
+        <h2 class="text-4xl font-bold text-blue-800 mb-8 text-center title-font israel-glow">Prophecy Milestones Timeline</h2>
+        <div class="relative border-l-4 border-blue-400 ml-4 md:ml-12 lg:ml-24">
             <!-- Milestone 1 -->
             <div class="mb-8 flex items-start">
                 <div class="flex-shrink-0 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold -ml-4 md:-ml-12 lg:-ml-24 absolute left-0">
@@ -186,28 +312,28 @@
                 </div>
                 <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-green-500 w-full">
                     <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold text-gray-100">Birth of Red Heifers</h2>
+                        <h2 class="text-2xl font-bold text-blue-800">Birth of Red Heifers</h2>
                         <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">COMPLETED</span>
                     </div>
-                    <p class="text-sm text-gray-400 mb-4">Completed: 2019-2021 | Last Update: September 2022</p>
-                    <p class="text-gray-300 mb-4">Five qualifying red heifers were born in Texas and successfully transported to Israel in September 2022. Two remain viable candidates as of 2025.</p>
+                    <p class="text-sm text-blue-600 mb-4">Completed: 2019-2021 | Last Update: September 2022</p>
+                    <p class="text-blue-700 mb-4">Five qualifying red heifers were born in Texas and successfully transported to Israel in September 2022. Two remain viable candidates as of 2025.</p>
                     
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-                        <div class="bg-gray-700 p-3 rounded">
-                            <p class="text-xs text-gray-400">Original Count</p>
-                            <p class="text-lg font-bold text-white">5</p>
+                        <div class="bg-cream-light p-3 rounded border border-blue-300">
+                            <p class="text-xs text-blue-600">Original Count</p>
+                            <p class="text-lg font-bold text-blue-800">5</p>
                         </div>
-                        <div class="bg-gray-700 p-3 rounded">
-                            <p class="text-xs text-gray-400">Current Viable</p>
-                            <p class="text-lg font-bold text-green-400">2</p>
+                        <div class="bg-cream-light p-3 rounded border border-blue-300">
+                            <p class="text-xs text-blue-600">Current Viable</p>
+                            <p class="text-lg font-bold text-green-600">2</p>
                         </div>
-                        <div class="bg-gray-700 p-3 rounded">
-                            <p class="text-xs text-gray-400">Age Range</p>
-                            <p class="text-lg font-bold text-white">3-4 yrs</p>
+                        <div class="bg-cream-light p-3 rounded border border-blue-300">
+                            <p class="text-xs text-blue-600">Age Range</p>
+                            <p class="text-lg font-bold text-blue-800">3-4 yrs</p>
                         </div>
-                        <div class="bg-gray-700 p-3 rounded">
-                            <p class="text-xs text-gray-400">Location</p>
-                            <p class="text-lg font-bold text-white">Israel</p>
+                        <div class="bg-cream-light p-3 rounded border border-blue-300">
+                            <p class="text-xs text-blue-600">Location</p>
+                            <p class="text-lg font-bold text-blue-800">Israel</p>
                         </div>
                     </div>
                 </div>
@@ -220,28 +346,28 @@
                 </div>
                 <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-yellow-500 w-full">
                     <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold text-gray-100">Temple Institute Preparations</h2>
+                        <h2 class="text-2xl font-bold text-blue-800">Temple Institute Preparations</h2>
                         <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">IN PROGRESS</span>
                     </div>
-                    <p class="text-sm text-gray-400 mb-4">Ongoing since 1987 | Accelerated 2020-2025</p>
-                    <p class="text-gray-300 mb-4">The Temple Institute continues creating sacred vessels, priestly garments, and training programs. Recent years have seen accelerated preparation activities.</p>
+                    <p class="text-sm text-blue-600 mb-4">Ongoing since 1987 | Accelerated 2020-2025</p>
+                    <p class="text-blue-700 mb-4">The Temple Institute continues creating sacred vessels, priestly garments, and training programs. Recent years have seen accelerated preparation activities.</p>
                     
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-                        <div class="bg-gray-700 p-3 rounded">
-                            <p class="text-xs text-gray-400">Sacred Vessels</p>
-                            <p class="text-lg font-bold text-yellow-400">90%</p>
+                        <div class="bg-cream-light p-3 rounded border border-blue-300">
+                            <p class="text-xs text-blue-600">Sacred Vessels</p>
+                            <p class="text-lg font-bold text-blue-800">90%</p>
                         </div>
-                        <div class="bg-gray-700 p-3 rounded">
-                            <p class="text-xs text-gray-400">Priestly Garments</p>
-                            <p class="text-lg font-bold text-yellow-400">75%</p>
+                        <div class="bg-cream-light p-3 rounded border border-blue-300">
+                            <p class="text-xs text-blue-600">Priestly Garments</p>
+                            <p class="text-lg font-bold text-blue-800">75%</p>
                         </div>
-                        <div class="bg-gray-700 p-3 rounded">
-                            <p class="text-xs text-gray-400">Training Programs</p>
-                            <p class="text-lg font-bold text-yellow-400">Active</p>
+                        <div class="bg-cream-light p-3 rounded border border-blue-300">
+                            <p class="text-xs text-blue-600">Training Programs</p>
+                            <p class="text-lg font-bold text-blue-800">Active</p>
                         </div>
-                        <div class="bg-gray-700 p-3 rounded">
-                            <p class="text-xs text-gray-400">Architectural Plans</p>
-                            <p class="text-lg font-bold text-yellow-400">Ready</p>
+                        <div class="bg-cream-light p-3 rounded border border-blue-300">
+                            <p class="text-xs text-blue-600">Architectural Plans</p>
+                            <p class="text-lg font-bold text-blue-800">Ready</p>
                         </div>
                     </div>
                 </div>
@@ -254,16 +380,16 @@
                 </div>
                 <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-yellow-500 w-full">
                     <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold text-gray-100">Purification Ceremony Practice</h2>
+                        <h2 class="text-2xl font-bold text-blue-800">Purification Ceremony Practice</h2>
                         <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">TESTING</span>
                     </div>
-                    <p class="text-sm text-gray-400 mb-4">First Practice: July 2025 | Location: Northern Israel</p>
-                    <p class="text-gray-300 mb-4">Practice ceremonies have been conducted to ensure proper execution of the biblical purification ritual when the time comes.</p>
+                    <p class="text-sm text-blue-600 mb-4">First Practice: July 2025 | Location: Northern Israel</p>
+                    <p class="text-blue-700 mb-4">Practice ceremonies have been conducted to ensure proper execution of the biblical purification ritual when the time comes.</p>
                     
-                    <div class="w-full bg-gray-700 rounded-full h-2 mt-4">
-                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 60%"></div>
+                    <div class="w-full bg-cream-light rounded-full h-2 mt-4 border border-blue-300">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 60%"></div>
                     </div>
-                    <p class="text-xs text-gray-400 mt-2">Ritual Preparation: 60% Complete</p>
+                    <p class="text-xs text-blue-600 mt-2">Ritual Preparation: 60% Complete</p>
                 </div>
             </div>
 
@@ -274,24 +400,24 @@
                 </div>
                 <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-gray-500 w-full">
                     <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold text-gray-100">Political/Religious Alignment</h2>
+                        <h2 class="text-2xl font-bold text-blue-800">Political/Religious Alignment</h2>
                         <span class="bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-semibold">DEVELOPING</span>
                     </div>
-                    <p class="text-sm text-gray-400 mb-4">Status: Complex negotiations ongoing</p>
-                    <p class="text-gray-300 mb-4">Political and religious consensus for Temple Mount activities remains a significant challenge requiring careful diplomatic navigation.</p>
+                    <p class="text-sm text-blue-600 mb-4">Status: Complex negotiations ongoing</p>
+                    <p class="text-blue-700 mb-4">Political and religious consensus for Temple Mount activities remains a significant challenge requiring careful diplomatic navigation.</p>
                     
                     <div class="grid grid-cols-3 gap-4 mt-4">
-                        <div class="bg-gray-700 p-3 rounded text-center">
-                            <p class="text-xs text-gray-400">Religious Support</p>
-                            <p class="text-lg font-bold text-blue-400">High</p>
+                        <div class="bg-cream-light p-3 rounded text-center border border-blue-300">
+                            <p class="text-xs text-blue-600">Religious Support</p>
+                            <p class="text-lg font-bold text-blue-800">High</p>
                         </div>
-                        <div class="bg-gray-700 p-3 rounded text-center">
-                            <p class="text-xs text-gray-400">Political Climate</p>
-                            <p class="text-lg font-bold text-yellow-400">Mixed</p>
+                        <div class="bg-cream-light p-3 rounded text-center border border-blue-300">
+                            <p class="text-xs text-blue-600">Political Climate</p>
+                            <p class="text-lg font-bold text-blue-600">Mixed</p>
                         </div>
-                        <div class="bg-gray-700 p-3 rounded text-center">
-                            <p class="text-xs text-gray-400">International</p>
-                            <p class="text-lg font-bold text-red-400">Cautious</p>
+                        <div class="bg-cream-light p-3 rounded text-center border border-blue-300">
+                            <p class="text-xs text-blue-600">International</p>
+                            <p class="text-lg font-bold text-blue-700">Cautious</p>
                         </div>
                     </div>
                 </div>
@@ -304,15 +430,15 @@
                 </div>
                 <div class="ml-8 md:ml-12 lg:ml-24 prophecy-card p-6 rounded-lg shadow-lg border-t-4 border-gray-600 w-full">
                     <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold text-gray-100">Red Heifer Sacrifice</h2>
+                        <h2 class="text-2xl font-bold text-blue-800">Red Heifer Sacrifice</h2>
                         <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm font-semibold">AWAITING</span>
                     </div>
-                    <p class="text-sm text-gray-400 mb-4">Target Window: Potentially 2025-2026</p>
-                    <p class="text-gray-300 mb-4">The culminating event that would enable Temple purification rituals. Timing depends on religious authority approval and political circumstances.</p>
+                    <p class="text-sm text-blue-600 mb-4">Target Window: Potentially 2025-2026</p>
+                    <p class="text-blue-700 mb-4">The culminating event that would enable Temple purification rituals. Timing depends on religious authority approval and political circumstances.</p>
                     
-                    <div class="bg-gray-700 p-4 rounded mt-4">
-                        <p class="text-sm text-gray-300 font-semibold mb-2">Prerequisites:</p>
-                        <ul class="text-sm text-gray-400 space-y-1">
+                    <div class="bg-cream-light p-4 rounded mt-4 border border-blue-300">
+                        <p class="text-sm text-blue-800 font-semibold mb-2">Prerequisites:</p>
+                        <ul class="text-sm text-blue-700 space-y-1">
                             <li>✓ Viable red heifer available</li>
                             <li>✓ Ritual knowledge prepared</li>
                             <li>⏳ Religious authority consensus</li>
@@ -323,10 +449,11 @@
                 </div>
             </div>
         </div>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 p-8 text-center text-gray-400">
+    <footer class="bg-blue-800 p-8 text-center text-blue-100">
         <p>&copy; 2025 Red Heifer Watch. All rights reserved.</p>
         <p class="mt-2">Encouraging respectful discussion and informed understanding.</p>
     </footer>
@@ -393,7 +520,7 @@
             } else if (now >= windowStart && now <= windowEnd) {
                 const daysRemaining = Math.floor((windowEnd - now) / (1000 * 60 * 60 * 24));
                 document.getElementById('optimal-window').textContent = `${daysRemaining} days remaining in window`;
-                document.getElementById('optimal-window').style.color = '#f59e0b';
+                document.getElementById('optimal-window').style.color = '#0038B8';
             } else {
                 document.getElementById('optimal-window').textContent = 'Window has passed';
                 document.getElementById('optimal-window').style.color = '#6b7280';
@@ -435,7 +562,7 @@
                         expanded.remove();
                     } else {
                         const expandedInfo = document.createElement('div');
-                        expandedInfo.className = 'expanded-info mt-4 p-4 bg-gray-900 rounded-lg border-l-4 border-blue-500';
+                        expandedInfo.className = 'expanded-info mt-4 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500';
                         
                         const additionalInfo = [
                             {
@@ -462,9 +589,9 @@
                         
                         if (additionalInfo[index]) {
                             expandedInfo.innerHTML = `
-                                <h4 class="text-lg font-bold text-blue-400 mb-2">${additionalInfo[index].title}</h4>
-                                <p class="text-gray-300">${additionalInfo[index].content}</p>
-                                <p class="text-xs text-gray-500 mt-2 italic">Click card again to collapse</p>
+                                <h4 class="text-lg font-bold text-blue-800 mb-2">${additionalInfo[index].title}</h4>
+                                <p class="text-blue-700">${additionalInfo[index].content}</p>
+                                <p class="text-xs text-blue-600 mt-2 italic">Click card again to collapse</p>
                             `;
                         }
                         

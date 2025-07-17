@@ -5,20 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Heifer Watch - Educational Resources</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Geist:wght@300;400;500;600;700;800;900&family=Source+Serif+4:wght@300;400;500;600;700;800;900&family=Berkeley+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Uncial+Antiqua&family=Philosopher:wght@400;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #0a0f1c;
-            --secondary-bg: #1a1f2e;
-            --accent-bg: #2a2f3e;
-            --primary-text: #f8fafc;
-            --secondary-text: #cbd5e1;
-            --muted-text: #94a3b8;
-            --accent-red: #dc2626;
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8f9fa;
+            --accent-bg: #e9ecef;
+            --cream-bg: #fefcf8;
+            --cream-light: #faf8f4;
+            --primary-text: #0038B8;
+            --secondary-text: #4A90E2;
+            --muted-text: #6c757d;
+            --accent-blue: #0038B8;
             --accent-gold: #fbbf24;
-            --border-color: #334155;
-            --glow-color: rgba(220, 38, 38, 0.3);
+            --border-color: #dee2e6;
+            --glow-color: rgba(0, 56, 184, 0.3);
+        }
+        
+        .bg-cream-50 {
+            background-color: var(--cream-bg);
+        }
+        
+        .bg-cream-light {
+            background-color: var(--cream-light);
         }
         
         * {
@@ -27,48 +36,65 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: radial-gradient(ellipse at top, #1e293b 0%, #0f172a 50%, #020617 100%);
-            background-attachment: fixed;
-            line-height: 1.65;
-            letter-spacing: -0.015em;
-            font-weight: 400;
-            font-size: 16px;
+            font-family: 'Crimson Text', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: var(--primary-text);
         }
         
         .title-font {
-            font-family: 'Fraunces', serif;
+            font-family: 'Cinzel', serif;
             font-weight: 700;
-            letter-spacing: -0.035em;
-            line-height: 1.15;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: -0.02em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 20px rgba(0, 56, 184, 0.5);
+        }
+        
+        .ancient-font {
+            font-family: 'Uncial Antiqua', cursive;
+        }
+        
+        .philosophical-font {
+            font-family: 'Philosopher', sans-serif;
+        }
+        
+        .israel-glow {
+            text-shadow: 
+                0 0 20px rgba(0, 56, 184, 0.6), 
+                0 0 40px rgba(0, 56, 184, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
         }
         
         .subtitle-font {
-            font-family: 'Source Serif 4', serif;
+            font-family: 'Cinzel', serif;
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
             line-height: 1.3;
         }
         
         .heading-font {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Philosopher', sans-serif;
             font-weight: 600;
-            letter-spacing: -0.025em;
-            line-height: 1.25;
+            letter-spacing: -0.01em;
+            text-rendering: optimizeLegibility;
         }
         
         .mono-font {
-            font-family: 'Berkeley Mono', 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            font-family: 'Crimson Text', serif;
             font-weight: 500;
-            letter-spacing: -0.01em;
+            letter-spacing: 0.02em;
         }
         
         .body-font {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Crimson Text', serif;
             font-weight: 400;
-            line-height: 1.65;
-            letter-spacing: -0.015em;
+            line-height: 1.6;
         }
         
         .premium-text {
@@ -79,7 +105,7 @@
         }
         
         .accent-text {
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            background: linear-gradient(135deg, #0038B8 0%, #002B8C 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -135,7 +161,7 @@
         }
         .premium-card:hover,
         .video-card:hover {
-            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.25);
+            box-shadow: 0 20px 60px rgba(0, 56, 184, 0.25);
             transform: translateY(-8px) scale(1.02);
             border-color: var(--accent-red);
         }
@@ -145,11 +171,11 @@
             gap: 1.5rem;
         }
         .image-overlay {
-            background: linear-gradient(45deg, rgba(239, 68, 68, 0.2), rgba(59, 130, 246, 0.2));
+            background: linear-gradient(45deg, rgba(0, 56, 184, 0.2), rgba(59, 130, 246, 0.2));
             transition: all 0.3s ease;
         }
         .gallery-item:hover .image-overlay {
-            background: linear-gradient(45deg, rgba(239, 68, 68, 0.4), rgba(59, 130, 246, 0.4));
+            background: linear-gradient(45deg, rgba(0, 56, 184, 0.4), rgba(59, 130, 246, 0.4));
         }
         .pulse-animation {
             animation: pulse 2s infinite;
@@ -166,10 +192,10 @@
             50% { transform: translateY(-5px); }
         }
         .timeline-glow {
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 0 20px rgba(0, 56, 184, 0.3);
         }
         .hero-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 20%, #dc2626 21%, #1e293b 22%, #0f172a 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 20%, #0038B8 21%, #1e293b 22%, #0f172a 100%);
         }
         .shimmer-effect {
             position: relative;
@@ -193,7 +219,7 @@
             position: relative;
             border: 2px solid transparent;
             background: linear-gradient(45deg, #1e293b, #0f172a) padding-box, 
-                        linear-gradient(45deg, #ef4444, #dc2626, #b91c1c) border-box;
+                        linear-gradient(45deg, #0038B8, #4A90E2, #002B8C) border-box;
         }
         .interactive-hover:hover {
             animation: gentle-bounce 0.6s ease-in-out;
@@ -203,7 +229,7 @@
             50% { transform: translateY(-8px); }
         }
         .text-gradient {
-            background: linear-gradient(45deg, #ef4444, #dc2626, #b91c1c);
+            background: linear-gradient(45deg, #0038B8, #4A90E2, #002B8C);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -220,11 +246,11 @@
         }
         .section-divider {
             height: 2px;
-            background: linear-gradient(90deg, transparent, #ef4444, transparent);
+            background: linear-gradient(90deg, transparent, #0038B8, transparent);
             margin: 3rem 0;
         }
         .typing-animation {
-            border-right: 2px solid #ef4444;
+            border-right: 2px solid #0038B8;
             animation: typing 3s steps(40, end), blink 1s infinite;
         }
         @keyframes typing {
@@ -232,7 +258,7 @@
             to { width: 100%; }
         }
         @keyframes blink {
-            0%, 50% { border-color: #ef4444; }
+            0%, 50% { border-color: #0038B8; }
             51%, 100% { border-color: transparent; }
         }
         .fade-in-up {
@@ -260,17 +286,17 @@
         }
         .gallery-item:hover {
             transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 56, 184, 0.4);
         }
         .timeline-pulse {
             animation: timelinePulse 2s ease-in-out infinite;
         }
         @keyframes timelinePulse {
             0%, 100% { 
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+                box-shadow: 0 0 0 0 rgba(0, 56, 184, 0.7);
             }
             50% { 
-                box-shadow: 0 0 0 20px rgba(239, 68, 68, 0);
+                box-shadow: 0 0 0 20px rgba(0, 56, 184, 0);
             }
         }
         .magnetic-effect {
@@ -291,7 +317,7 @@
             left: 50%;
             width: 60px;
             height: 60px;
-            background: rgba(239, 68, 68, 0.9);
+            background: rgba(0, 56, 184, 0.9);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             display: flex;
@@ -301,7 +327,7 @@
             z-index: 10;
         }
         .video-thumbnail:hover::before {
-            background: rgba(239, 68, 68, 1);
+            background: rgba(0, 56, 184, 1);
             transform: translate(-50%, -50%) scale(1.1);
         }
         .scroll-reveal {
@@ -337,18 +363,18 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="bg-white text-blue-900">
 
     <!-- Navigation Bar -->
-    <nav class="bg-gray-800 p-4">
+    <nav class="bg-blue-800 p-4 border-b border-blue-600">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold accent-text heading-font">Red Heifer Watch</a>
+            <a href="index.html" class="text-2xl font-bold text-white brand-title israel-glow">Red Heifer Watch</a>
             <div class="space-x-6">
-                <a href="news.html" class="text-slate-300 hover:text-red-400 transition-colors duration-200 body-font font-medium">News</a>
-                <a href="prophecy.html" class="text-slate-300 hover:text-red-400 transition-colors duration-200 body-font font-medium">Prophecy Tracker</a>
-                <a href="education.html" class="text-red-400 font-semibold body-font">Education</a>
-                <a href="about.html" class="text-slate-300 hover:text-red-400 transition-colors duration-200 body-font font-medium">FAQ / About</a>
-                <a href="contact.html" class="text-slate-300 hover:text-red-400 transition-colors duration-200 body-font font-medium">Contact</a>
+                <a href="news.html" class="text-blue-100 hover:text-white font-medium transition-colors duration-200 text-sm uppercase tracking-wider heading-font">News</a>
+                <a href="prophecy.html" class="text-blue-100 hover:text-white font-medium transition-colors duration-200 text-sm uppercase tracking-wider heading-font">Prophecy Tracker</a>
+                <a href="education.html" class="text-white font-medium text-sm uppercase tracking-wider border-b-2 border-white pb-1 heading-font">Education</a>
+                <a href="about.html" class="text-blue-100 hover:text-white font-medium transition-colors duration-200 text-sm uppercase tracking-wider heading-font">FAQ / About</a>
+                <a href="contact.html" class="text-blue-100 hover:text-white font-medium transition-colors duration-200 text-sm uppercase tracking-wider heading-font">Contact</a>
             </div>
         </div>
     </nav>
@@ -356,15 +382,101 @@
     <!-- Main Content -->
     <main class="container mx-auto py-20 px-6">
         <div class="max-w-6xl mx-auto">
-            <h1 class="font-bold accent-text mb-12 text-center title-font fade-in-up">Educational Resources</h1>
-            <p class="text-xl text-slate-300 text-center mb-16 max-w-4xl mx-auto fade-in-up body-font leading-relaxed">
+            <h1 class="text-5xl font-bold text-blue-600 mb-12 text-center title-font fade-in-up">Educational Resources</h1>
+            <p class="text-xl text-blue-700 text-center mb-16 max-w-4xl mx-auto fade-in-up body-font leading-relaxed">
                 Understanding the profound significance of the Red Heifer and Third Temple prophecies through comprehensive visual education and scholarly research.
             </p>
+            
+            <!-- Interactive Timeline - Moved to Top -->
+            <section class="mb-24 scroll-reveal">
+                <h2 class="text-4xl font-bold text-blue-600 mb-12 text-center subtitle-font">Red Heifer Timeline</h2>
+            
+                <div class="premium-card p-10 rounded-xl glow-border">
+                    <div class="relative">
+                        <!-- Timeline Line -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-blue-600 timeline-pulse"></div>
+                        
+                        <!-- Timeline Events -->
+                        <div class="space-y-16">
+                            <!-- Event 1 -->
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="bg-cream-50 p-6 rounded-lg border-2 border-blue-300 shadow-md">
+                                        <h3 class="text-lg font-semibold text-blue-800 mb-2 heading-font">Ancient Times</h3>
+                                        <p class="text-blue-700 text-sm body-font">Last red heifer sacrifice performed before Temple destruction (70 AD)</p>
+                                    </div>
+                                </div>
+                                <div class="relative flex items-center justify-center w-10 h-10 bg-blue-600 rounded-full z-10">
+                                    <span class="text-white text-sm font-bold mono-font">1</span>
+                                </div>
+                                <div class="w-1/2 pl-8"></div>
+                            </div>
+
+                            <!-- Event 2 -->
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8"></div>
+                                <div class="relative flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full z-10">
+                                    <span class="text-white text-xs font-bold">2</span>
+                                </div>
+                                <div class="w-1/2 pl-8">
+                                    <div class="bg-cream-50 p-6 rounded-lg border-2 border-blue-300 shadow-md">
+                                        <h3 class="text-lg font-bold text-blue-800 heading-font">2022</h3>
+                                        <p class="text-blue-700 text-sm body-font">Five red heifer candidates transported from Texas to Israel</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event 3 - Practice Sacrifice -->
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="bg-cream-50 p-6 rounded-lg border-2 border-blue-400 shadow-md">
+                                        <h3 class="text-lg font-bold text-blue-800 heading-font">July 2025</h3>
+                                        <p class="text-blue-700 text-sm body-font">Practice sacrifice ceremony conducted to train priests and test procedures</p>
+                                    </div>
+                                </div>
+                                <div class="relative flex items-center justify-center w-8 h-8 bg-blue-400 rounded-full z-10">
+                                    <span class="text-white text-xs font-bold">3</span>
+                                </div>
+                                <div class="w-1/2 pl-8"></div>
+                            </div>
+
+                            <!-- Event 4 -->
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8"></div>
+                                <div class="relative flex items-center justify-center w-8 h-8 bg-blue-300 rounded-full z-10">
+                                    <span class="text-white text-xs font-bold">4</span>
+                                </div>
+                                <div class="w-1/2 pl-8">
+                                    <div class="bg-cream-50 p-6 rounded-lg border-2 border-blue-300 shadow-md">
+                                        <h3 class="text-lg font-bold text-blue-800 heading-font">2025</h3>
+                                        <p class="text-blue-700 text-sm body-font">Two heifers remain viable candidates for purification ceremony</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Future Event -->
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="bg-cream-light p-6 rounded-lg border-2 border-dashed border-blue-200 shadow-md">
+                                        <h3 class="text-lg font-bold text-blue-600 heading-font">Future</h3>
+                                        <p class="text-blue-700 text-sm body-font">Potential ceremony and Temple reconstruction...</p>
+                                    </div>
+                                </div>
+                                <div class="relative flex items-center justify-center w-8 h-8 bg-blue-200 rounded-full z-10">
+                                    <span class="text-blue-800 text-xs font-bold">?</span>
+                                </div>
+                                <div class="w-1/2 pl-8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <div class="section-divider"></div>
 
             <!-- Red Heifer Gallery Section -->
             <section class="mb-24 scroll-reveal">
-                <h2 class="text-4xl font-bold accent-text mb-12 text-center subtitle-font">The Red Heifer: A Visual Journey</h2>
+                <h2 class="text-4xl font-bold text-blue-600 mb-12 text-center subtitle-font">The Red Heifer: A Visual Journey</h2>
             
             <div class="red-heifer-gallery mb-8">
                 <!-- Red Heifer Image 1 -->
@@ -375,7 +487,7 @@
                         <div class="absolute inset-0 image-overlay"></div>
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent p-6">
                             <h3 class="text-white font-semibold text-lg heading-font mb-1">Biblical Red Heifer</h3>
-                            <p class="text-slate-300 text-sm body-font">A perfect, unblemished red cow as described in Numbers 19</p>
+                            <p class="text-blue-700 text-sm body-font">A perfect, unblemished red cow as described in Numbers 19</p>
                         </div>
                     </div>
                 </div>
@@ -388,7 +500,7 @@
                         <div class="absolute inset-0 image-overlay"></div>
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent p-6">
                             <h3 class="text-white font-semibold text-lg heading-font mb-1">Temple Mount</h3>
-                            <p class="text-slate-300 text-sm body-font">The holiest site in Judaism, where the Third Temple will be built</p>
+                            <p class="text-blue-700 text-sm body-font">The holiest site in Judaism, where the Third Temple will be built</p>
                         </div>
                     </div>
                 </div>
@@ -401,7 +513,7 @@
                         <div class="absolute inset-0 image-overlay"></div>
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent p-4">
                             <h3 class="text-white font-bold text-lg philosophical-font text-gradient">Modern Israel</h3>
-                            <p class="text-gray-200 text-sm">The restored nation where prophecy unfolds</p>
+                            <p class="text-blue-100 text-sm">The restored nation where prophecy unfolds</p>
                         </div>
                     </div>
                 </div>
@@ -414,7 +526,7 @@
                         <div class="absolute inset-0 image-overlay"></div>
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent p-4">
                             <h3 class="text-white font-bold text-lg philosophical-font text-gradient">Ancient Temple</h3>
-                            <p class="text-gray-200 text-sm">Historical Temple architecture and sacred design</p>
+                            <p class="text-blue-100 text-sm">Historical Temple architecture and sacred design</p>
                         </div>
                     </div>
                 </div>
@@ -425,16 +537,16 @@
         
             <!-- Educational Videos Section -->
             <section class="mb-24 scroll-reveal">
-                <h2 class="text-4xl font-bold accent-text mb-12 text-center subtitle-font">Essential Educational Videos</h2>
+                <h2 class="text-4xl font-bold text-blue-600 mb-12 text-center subtitle-font">Essential Educational Videos</h2>
             
                 <!-- Video Search Instructions -->
-                <div class="premium-card p-8 rounded-xl mb-12 border-l-4 border-red-500">
-                    <h3 class="text-xl font-semibold accent-text mb-4 heading-font">How to Find Red Heifer Videos</h3>
-                    <p class="text-slate-300 mb-6 body-font">Search YouTube for these recommended topics to stay informed:</p>
+                <div class="premium-card p-8 rounded-xl mb-12 border-l-4 border-blue-500">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-4 heading-font">How to Find Red Heifer Videos</h3>
+                    <p class="text-blue-700 mb-6 body-font">Search YouTube for these recommended topics to stay informed:</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <h4 class="font-semibold text-slate-200 mb-3 heading-font">🔍 Search Terms:</h4>
-                        <ul class="text-sm text-slate-400 space-y-2 body-font">
+                        <h4 class="font-semibold text-blue-800 mb-3 heading-font">🔍 Search Terms:</h4>
+                        <ul class="text-sm text-blue-700 space-y-2 body-font">
                             <li>• "Red Heifer Temple Institute 2025"</li>
                             <li>• "Third Temple Israel latest news"</li>
                             <li>• "Red Heifer sacrifice biblical prophecy"</li>
@@ -442,8 +554,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="font-semibold text-slate-200 mb-3 heading-font">📺 Recommended Channels:</h4>
-                        <ul class="text-sm text-slate-400 space-y-2 body-font">
+                        <h4 class="font-semibold text-blue-800 mb-3 heading-font">📺 Recommended Channels:</h4>
+                        <ul class="text-sm text-blue-700 space-y-2 body-font">
                             <li>• Temple Institute Official</li>
                             <li>• Breaking Israel News</li>
                             <li>• Prophecy Update Videos</li>
@@ -457,7 +569,7 @@
                 
                 <!-- Video Placeholder 1 -->
                 <div class="video-card rounded-lg p-6 card-stack magnetic-effect staggered-animation">
-                    <div class="relative h-48 bg-gradient-to-br from-red-900 to-red-700 rounded-lg mb-4 flex items-center justify-center video-thumbnail">
+                    <div class="relative h-48 bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg mb-4 flex items-center justify-center video-thumbnail">
                         <div class="text-center">
                             <svg class="w-16 h-16 text-white mx-auto mb-3 pulse-animation" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
@@ -466,11 +578,11 @@
                             <p class="text-white font-semibold text-gradient">"Red Heifer 2025"</p>
                         </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-slate-100 mb-3 heading-font">Understanding the Red Heifer</h3>
-                    <p class="text-slate-300 text-sm mb-4 body-font leading-relaxed">Search for latest Temple Institute explanations and biblical requirements</p>
+                    <h3 class="text-xl font-semibold text-blue-800 mb-3 heading-font">Understanding the Red Heifer</h3>
+                    <p class="text-blue-700 text-sm mb-4 body-font leading-relaxed">Search for latest Temple Institute explanations and biblical requirements</p>
                     <div class="flex justify-between items-center">
-                        <span class="text-xs bg-red-600 text-white px-3 py-1 rounded-full float-animation mono-font font-medium">BIBLICAL</span>
-                        <a href="https://www.youtube.com/results?search_query=red+heifer+temple+institute+2025" target="_blank" class="text-red-400 hover:text-red-300 text-sm interactive-hover body-font font-medium">Search YouTube →</a>
+                        <span class="text-xs bg-blue-600 text-white px-3 py-1 rounded-full float-animation mono-font font-medium">BIBLICAL</span>
+                        <a href="https://www.youtube.com/results?search_query=red+heifer+temple+institute+2025" target="_blank" class="text-blue-400 hover:text-blue-300 text-sm interactive-hover body-font font-medium">Search YouTube →</a>
                     </div>
                 </div>
 
@@ -485,8 +597,8 @@
                             <p class="text-white font-semibold">"Third Temple Plans"</p>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-100 mb-2 philosophical-font">Third Temple Reconstruction</h3>
-                    <p class="text-gray-300 text-sm mb-3">Detailed architectural plans and preparation updates</p>
+                    <h3 class="text-xl font-bold text-blue-800 mb-2 philosophical-font">Third Temple Reconstruction</h3>
+                    <p class="text-blue-700 text-sm mb-3">Detailed architectural plans and preparation updates</p>
                     <div class="flex justify-between items-center">
                         <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded">ARCHITECTURE</span>
                         <a href="https://www.youtube.com/results?search_query=third+temple+reconstruction+plans+israel" target="_blank" class="text-blue-400 hover:text-blue-300 text-sm">Search YouTube →</a>
@@ -504,8 +616,8 @@
                             <p class="text-white font-semibold">"Biblical Prophecy"</p>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-100 mb-2 philosophical-font">Prophetic Significance</h3>
-                    <p class="text-gray-300 text-sm mb-3">End times prophecy and biblical analysis</p>
+                    <h3 class="text-xl font-bold text-blue-800 mb-2 philosophical-font">Prophetic Significance</h3>
+                    <p class="text-blue-700 text-sm mb-3">End times prophecy and biblical analysis</p>
                     <div class="flex justify-between items-center">
                         <span class="text-xs bg-purple-600 text-white px-2 py-1 rounded">PROPHECY</span>
                         <a href="https://www.youtube.com/results?search_query=red+heifer+biblical+prophecy+end+times" target="_blank" class="text-purple-400 hover:text-purple-300 text-sm">Search YouTube →</a>
@@ -523,8 +635,8 @@
                             <p class="text-white font-semibold">"Temple Mount"</p>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-100 mb-2 philosophical-font">Temple Mount History</h3>
-                    <p class="text-gray-300 text-sm mb-3">Historical documentaries and current status</p>
+                    <h3 class="text-xl font-bold text-blue-800 mb-2 philosophical-font">Temple Mount History</h3>
+                    <p class="text-blue-700 text-sm mb-3">Historical documentaries and current status</p>
                     <div class="flex justify-between items-center">
                         <span class="text-xs bg-green-600 text-white px-2 py-1 rounded">HISTORY</span>
                         <a href="https://www.youtube.com/results?search_query=temple+mount+jerusalem+history+documentary" target="_blank" class="text-green-400 hover:text-green-300 text-sm">Search YouTube →</a>
@@ -542,8 +654,8 @@
                             <p class="text-white font-semibold">"Sacred Vessels"</p>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-100 mb-2 philosophical-font">Temple Institute Artifacts</h3>
-                    <p class="text-gray-300 text-sm mb-3">Sacred vessels and priestly garment recreation</p>
+                    <h3 class="text-xl font-bold text-blue-800 mb-2 philosophical-font">Temple Institute Artifacts</h3>
+                    <p class="text-blue-700 text-sm mb-3">Sacred vessels and priestly garment recreation</p>
                     <div class="flex justify-between items-center">
                         <span class="text-xs bg-yellow-600 text-white px-2 py-1 rounded">ARTIFACTS</span>
                         <a href="https://www.youtube.com/results?search_query=temple+institute+sacred+vessels+priestly+garments" target="_blank" class="text-yellow-400 hover:text-yellow-300 text-sm">Search YouTube →</a>
@@ -552,7 +664,7 @@
 
                 <!-- Video Placeholder 6 -->
                 <div class="video-card rounded-lg p-6">
-                    <div class="relative h-48 bg-gradient-to-br from-red-900 to-orange-700 rounded-lg mb-4 flex items-center justify-center">
+                    <div class="relative h-48 bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg mb-4 flex items-center justify-center">
                         <div class="text-center">
                             <svg class="w-16 h-16 text-white mx-auto mb-3" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
@@ -561,108 +673,25 @@
                             <p class="text-white font-semibold">"Breaking News"</p>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-100 mb-2 philosophical-font">Latest Developments</h3>
-                    <p class="text-gray-300 text-sm mb-3">Recent news and current red heifer status</p>
+                    <h3 class="text-xl font-bold text-blue-800 mb-2 philosophical-font">Latest Developments</h3>
+                    <p class="text-blue-700 text-sm mb-3">Recent news and current red heifer status</p>
                     <div class="flex justify-between items-center">
-                        <span class="text-xs bg-red-500 text-white px-2 py-1 rounded">BREAKING</span>
-                        <a href="https://www.youtube.com/results?search_query=red+heifer+israel+news+2025+latest" target="_blank" class="text-red-400 hover:text-red-300 text-sm">Search YouTube →</a>
+                        <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">BREAKING</span>
+                        <a href="https://www.youtube.com/results?search_query=red+heifer+israel+news+2025+latest" target="_blank" class="text-blue-400 hover:text-blue-300 text-sm">Search YouTube →</a>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Add Your Own Videos Section -->
-            <div class="mt-12 bg-gray-800 p-8 rounded-lg border-l-4 border-blue-500">
-                <h3 class="text-2xl font-bold text-blue-400 mb-4 title-font">Add Your Own Videos</h3>
-                <p class="text-gray-300 mb-4">Found a great red heifer or Third Temple video? Here's how to add it:</p>
-                <div class="bg-gray-900 p-4 rounded-lg">
-                    <p class="text-green-400 text-sm font-mono mb-2">1. Get the YouTube video ID from the URL:</p>
-                    <p class="text-gray-400 text-sm font-mono mb-2">   https://www.youtube.com/watch?v=<span class="text-red-400">VIDEO_ID_HERE</span></p>
-                    <p class="text-green-400 text-sm font-mono mb-2">2. Replace "VIDEO_ID_HERE" in the iframe src:</p>
-                    <p class="text-gray-400 text-sm font-mono">   src="https://www.youtube.com/embed/<span class="text-red-400">VIDEO_ID_HERE</span>"</p>
-                </div>
-            </div>
         </section>
 
-        <div class="section-divider"></div>
-        
-            <!-- Interactive Timeline -->
-            <section class="mb-24 scroll-reveal">
-                <h2 class="text-4xl font-bold accent-text mb-12 text-center subtitle-font">Red Heifer Timeline</h2>
-            
-                <div class="premium-card p-10 rounded-xl glow-border">
-                    <div class="relative">
-                        <!-- Timeline Line -->
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-red-500 timeline-pulse"></div>
-                        
-                        <!-- Timeline Events -->
-                        <div class="space-y-16">
-                            <!-- Event 1 -->
-                            <div class="flex items-center">
-                                <div class="w-1/2 pr-8 text-right">
-                                    <div class="premium-card p-6 rounded-lg">
-                                        <h3 class="text-lg font-semibold accent-text mb-2 heading-font">Ancient Times</h3>
-                                        <p class="text-slate-300 text-sm body-font">Last red heifer sacrifice performed before Temple destruction (70 AD)</p>
-                                    </div>
-                                </div>
-                                <div class="relative flex items-center justify-center w-10 h-10 bg-red-500 rounded-full z-10">
-                                    <span class="text-white text-sm font-bold mono-font">1</span>
-                                </div>
-                                <div class="w-1/2 pl-8"></div>
-                            </div>
-
-                        <!-- Event 2 -->
-                        <div class="flex items-center">
-                            <div class="w-1/2 pr-8"></div>
-                            <div class="relative flex items-center justify-center w-8 h-8 bg-yellow-500 rounded-full z-10">
-                                <span class="text-white text-xs font-bold">2</span>
-                            </div>
-                            <div class="w-1/2 pl-8">
-                                <div class="bg-gray-700 p-4 rounded-lg">
-                                    <h3 class="text-lg font-bold text-red-400 philosophical-font">2022</h3>
-                                    <p class="text-gray-300 text-sm">Five red heifer candidates transported from Texas to Israel</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Event 3 -->
-                        <div class="flex items-center">
-                            <div class="w-1/2 pr-8 text-right">
-                                <div class="bg-gray-700 p-4 rounded-lg">
-                                    <h3 class="text-lg font-bold text-red-400 philosophical-font">2025</h3>
-                                    <p class="text-gray-300 text-sm">Two heifers remain viable candidates for purification ceremony</p>
-                                </div>
-                            </div>
-                            <div class="relative flex items-center justify-center w-8 h-8 bg-green-500 rounded-full z-10">
-                                <span class="text-white text-xs font-bold">3</span>
-                            </div>
-                            <div class="w-1/2 pl-8"></div>
-                        </div>
-
-                        <!-- Future Event -->
-                        <div class="flex items-center">
-                            <div class="w-1/2 pr-8"></div>
-                            <div class="relative flex items-center justify-center w-8 h-8 bg-gray-500 rounded-full z-10">
-                                <span class="text-white text-xs font-bold">?</span>
-                            </div>
-                            <div class="w-1/2 pl-8">
-                                <div class="bg-gray-700 p-4 rounded-lg border-2 border-dashed border-gray-500">
-                                    <h3 class="text-lg font-bold text-gray-400 philosophical-font">Future</h3>
-                                    <p class="text-gray-400 text-sm">Potential ceremony and Temple reconstruction...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
             <!-- Call to Action -->
             <section class="text-center premium-card p-12 rounded-xl glow-border scroll-reveal">
-                <h2 class="text-3xl font-bold accent-text mb-6 subtitle-font">Stay Informed</h2>
-                <p class="text-slate-300 mb-8 body-font text-lg leading-relaxed max-w-2xl mx-auto">Follow the unfolding of biblical prophecy with our comprehensive tracking and analysis.</p>
+                <h2 class="text-3xl font-bold text-blue-600 mb-6 subtitle-font">Stay Informed</h2>
+                <p class="text-blue-700 mb-8 body-font text-lg leading-relaxed max-w-2xl mx-auto">Follow the unfolding of biblical prophecy with our comprehensive tracking and analysis.</p>
                 <div class="space-x-6">
-                    <a href="news.html" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors interactive-hover body-font">Latest News</a>
+                    <a href="news.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors interactive-hover body-font">Latest News</a>
                     <a href="prophecy.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors interactive-hover body-font">Prophecy Tracker</a>
                 </div>
             </section>
@@ -671,7 +700,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 p-8 text-center text-gray-400">
+    <footer class="bg-blue-800 p-8 text-center text-blue-100">
         <p>&copy; 2025 Red Heifer Watch. All rights reserved.</p>
         <p class="mt-2">Encouraging respectful discussion and informed understanding.</p>
     </footer>
@@ -742,12 +771,12 @@
             videoCards.forEach(card => {
                 card.addEventListener('mouseenter', () => {
                     card.style.transform = 'translateY(-10px) scale(1.02)';
-                    card.style.boxShadow = '0 20px 40px rgba(239, 68, 68, 0.3)';
+                    card.style.boxShadow = '0 20px 40px rgba(0, 56, 184, 0.3)';
                 });
                 
                 card.addEventListener('mouseleave', () => {
                     card.style.transform = 'translateY(0) scale(1)';
-                    card.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3)';
+                    card.style.boxShadow = '0 8px 32px rgba(0, 56, 184, 0.1)';
                 });
             });
         }

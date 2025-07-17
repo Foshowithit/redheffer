@@ -5,46 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Heifer Watch - About</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Uncial+Antiqua&family=Philosopher:wght@400;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-blue: #0038B8;
+            --secondary-blue: #4A90E2;
+            --dark-blue: #002B8C;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #2c3e50;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #0038B8;
+            --text-secondary: #4A90E2;
+            --text-muted: #6c757d;
+        }
+        
         body {
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-family: 'Crimson Text', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .title-font {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 20px rgba(0, 56, 184, 0.5);
+        }
+        
+        .ancient-font {
+            font-family: 'Uncial Antiqua', cursive;
+        }
+        
+        .philosophical-font {
+            font-family: 'Philosopher', sans-serif;
+        }
+        
+        .israel-glow {
+            text-shadow: 
+                0 0 20px rgba(0, 56, 184, 0.6), 
+                0 0 40px rgba(0, 56, 184, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        
+        /* Enhanced navigation */
+        nav {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 56, 184, 0.95);
+        }
+        
+        nav a {
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Content text styling */
+        p, .text-blue-700 {
+            font-family: 'Crimson Text', serif;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: -0.025em;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="bg-white text-blue-900">
 
     <!-- Navigation Bar -->
-    <nav class="bg-gray-800 p-4">
+    <nav class="bg-blue-800 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-red-500">Red Heifer Watch</a>
+            <a href="index.html" class="text-2xl font-bold text-white brand-title israel-glow">Red Heifer Watch</a>
             <div class="space-x-4">
-                <a href="news.html" class="text-gray-300 hover:text-red-400">News</a>
-                <a href="prophecy.html" class="text-gray-300 hover:text-red-400">Prophecy Tracker</a>
-                <a href="about.html" class="text-gray-300 hover:text-red-400">FAQ / About</a>
-                <a href="contact.html" class="text-gray-300 hover:text-red-400">Contact</a>
+                <a href="news.html" class="text-blue-100 hover:text-white">News</a>
+                <a href="prophecy.html" class="text-blue-100 hover:text-white">Prophecy Tracker</a>
+                <a href="about.html" class="text-blue-100 hover:text-white">FAQ / About</a>
+                <a href="contact.html" class="text-blue-100 hover:text-white">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content - About -->
     <main class="container mx-auto py-16 px-4">
-        <h1 class="text-4xl font-bold text-red-500 mb-8 text-center">About Red Heifer Watch</h1>
+        <h1 class="text-5xl font-bold text-blue-600 mb-12 text-center title-font israel-glow">About Red Heifer Watch</h1>
 
-        <div class="bg-gray-800 p-8 rounded-lg shadow-lg border-t-4 border-gold-400 max-w-3xl mx-auto">
-            <p class="text-lg text-gray-300 mb-6">
+        <div class="bg-blue-50 p-8 rounded-lg shadow-lg border-t-4 border-blue-500 max-w-3xl mx-auto">
+            <p class="text-lg text-blue-700 mb-6">
                 Red Heifer Watch is dedicated to informing and educating the general public about the significant developments surrounding the Red Heifer, the Temple Institute, and Third Temple prophecy. Our goal is to provide a centralized, respectful platform for tracking these critical milestones.
             </p>
-            <p class="text-lg text-gray-300 mb-6">
+            <p class="text-lg text-blue-700 mb-6">
                 This site is for anyone interested in understanding the intersection of ancient prophecy and current events. Whether you are a scholar, a person of faith, or simply curious, we aim to present information clearly and objectively.
             </p>
-            <p class="text-lg text-gray-300">
+            <p class="text-lg text-blue-700">
                 We believe it is important to track these developments as they hold profound significance for many, potentially signaling major shifts in geopolitical and religious landscapes. By monitoring these events, we can better understand the unfolding narrative and encourage informed, respectful discussion.
             </p>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 p-8 text-center text-gray-400">
+    <footer class="bg-blue-800 p-8 text-center text-blue-100">
         <p>&copy; 2025 Red Heifer Watch. All rights reserved.</p>
         <p class="mt-2">Encouraging respectful discussion and informed understanding.</p>
     </footer>

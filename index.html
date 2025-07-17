@@ -15,17 +15,18 @@
         }
 
         :root {
-            --primary-red: #ff0000;
-            --secondary-red: #cc0000;
-            --dark-red: #990000;
-            --gold: #ffd700;
-            --dark-gold: #b8860b;
-            --bg-primary: #000000;
-            --bg-secondary: #0a0a0a;
-            --bg-tertiary: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #cccccc;
-            --text-muted: #888888;
+            --primary-blue: #0038B8;
+            --light-blue: #4A90E2;
+            --dark-blue: #002B8C;
+            --white: #ffffff;
+            --light-gray: #f0f8ff;
+            --dark-gray: #8BB8E8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f0f8ff;
+            --bg-tertiary: #e6f2ff;
+            --text-primary: #0038B8;
+            --text-secondary: #4A90E2;
+            --text-muted: #8BB8E8;
         }
 
         body {
@@ -53,6 +54,7 @@
             height: 100%;
             overflow: hidden;
             z-index: -1;
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
         }
         
         .background-video {
@@ -86,9 +88,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 0, 0, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(0, 56, 184, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(74, 144, 226, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 56, 184, 0.1) 0%, transparent 50%);
             animation: backgroundShift 20s ease-in-out infinite;
             z-index: 0;
         }
@@ -122,37 +124,9 @@
             animation: float 15s infinite linear;
             opacity: 0.7;
             pointer-events: none;
-            filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.6)) brightness(1.1) contrast(1.2);
+            filter: drop-shadow(0 0 8px rgba(0, 56, 184, 0.6)) brightness(1.1) contrast(1.2);
         }
 
-        /* Floating Red Heifer */
-        .floating-cow {
-            position: fixed;
-            bottom: 20%;
-            right: 8%;
-            width: 120px;
-            height: 120px;
-            z-index: 5;
-            opacity: 0.95;
-            animation: heiferFloat 6s ease-in-out infinite;
-            filter: 
-                contrast(1.4) 
-                brightness(1.2) 
-                saturate(1.6) 
-                drop-shadow(0 0 25px rgba(255, 0, 0, 0.8)) 
-                drop-shadow(0 0 50px rgba(255, 0, 0, 0.4));
-            
-            /* GPU acceleration */
-            will-change: transform;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-        }
-
-        .floating-cow img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
 
         /* Mobile optimizations */
         @media (max-width: 768px) {
@@ -161,118 +135,40 @@
                 display: none !important;
             }
             
-            .youtube-background {
-                display: none !important;
-            }
-            
-            /* Simplify and stabilize floating cow for mobile */
-            .floating-cow {
-                position: absolute !important;
-                bottom: 5% !important;
-                right: 5% !important;
-                width: 70px !important;
-                height: 70px !important;
-                z-index: 15 !important;
-                opacity: 1 !important;
-                animation: none !important;
-                transform: none !important;
-                filter: none !important;
+            /* Optimize video background for mobile */
+            .video-background {
                 display: block !important;
-                visibility: visible !important;
             }
             
-            .floating-cow img {
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: contain !important;
-                display: block !important;
-                opacity: 1 !important;
+            .background-video {
+                width: 100vw !important;
+                height: 100vh !important;
+                object-fit: cover !important;
             }
             
-            /* Mobile-specific cow for maximum reliability */
-            .mobile-cow {
-                display: block !important;
-                position: fixed !important;
-                bottom: 10% !important;
-                right: 5% !important;
-                width: 60px !important;
-                height: 60px !important;
-                z-index: 999999 !important;
-                opacity: 1 !important;
-                pointer-events: none !important;
-                /* Force browser to render it */
-                transform: translateZ(0) !important;
-                will-change: auto !important;
-                backface-visibility: visible !important;
-            }
             
-            .mobile-cow img {
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: contain !important;
-                display: block !important;
-                opacity: 1 !important;
-                filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6)) !important;
-            }
-            
-            /* Hide desktop cow on mobile */
-            .floating-cow {
-                display: none !important;
-            }
-            
-            /* Mobile background alternative */
-            .video-container::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: 
-                    linear-gradient(135deg, 
-                        rgba(255, 0, 0, 0.4) 0%, 
-                        rgba(139, 0, 0, 0.6) 20%,
-                        rgba(0, 0, 0, 0.8) 40%, 
-                        rgba(0, 0, 0, 0.9) 60%,
-                        rgba(139, 0, 0, 0.6) 80%,
-                        rgba(255, 0, 0, 0.4) 100%
-                    ),
-                    radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 80%, rgba(255, 0, 0, 0.4) 0%, transparent 50%),
-                    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.95) 100%);
-                z-index: 1;
-                animation: mobileBackgroundShift 20s ease-in-out infinite;
-            }
-            
-            @keyframes mobileBackgroundShift {
-                0%, 100% { 
-                    background-position: 0% 0%, 30% 20%, 80% 80%, 0% 0%;
-                }
-                50% { 
-                    background-position: 100% 100%, 70% 80%, 20% 20%, 0% 0%;
-                }
-            }
             
             .hero-content {
                 z-index: 10;
                 position: relative;
                 background: transparent;
                 border-radius: 0;
-                padding: 2rem 1rem;
+                padding: 2.5rem 1.5rem;
                 margin: 0;
                 backdrop-filter: none;
                 border: none;
                 box-shadow: none;
                 /* Ensure content is always above other elements */
                 isolation: isolate;
+                transform: none;
             }
             
             .hero-title {
                 font-size: clamp(1.8rem, 7vw, 3.5rem) !important;
                 text-shadow: 
                     3px 3px 6px rgba(0, 0, 0, 1), 
-                    0 0 30px rgba(255, 0, 0, 1),
-                    0 0 60px rgba(255, 0, 0, 0.8),
+                    0 0 30px rgba(0, 56, 184, 1),
+                    0 0 60px rgba(0, 56, 184, 0.8),
                     2px 2px 0px rgba(0, 0, 0, 1) !important;
                 margin-bottom: 1rem !important;
                 line-height: 1.1 !important;
@@ -308,15 +204,19 @@
             
             .cta-button {
                 width: 100% !important;
-                max-width: 280px !important;
+                max-width: 300px !important;
                 text-align: center !important;
-                min-height: 44px !important;
-                font-size: 1rem !important;
+                min-height: 50px !important;
+                font-size: 1.1rem !important;
                 font-weight: 700 !important;
-                padding: 1rem 1.5rem !important;
-                border-radius: 25px !important;
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
-                transition: all 0.3s ease !important;
+                padding: 1.2rem 2rem !important;
+                border-radius: 50px !important;
+                box-shadow: 
+                    0 8px 25px rgba(0, 0, 0, 0.6),
+                    0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                backdrop-filter: blur(5px);
+                letter-spacing: 0.05em !important;
                 
                 /* Mobile touch optimizations */
                 -webkit-tap-highlight-color: transparent;
@@ -325,38 +225,89 @@
             }
             
             .cta-button:active {
-                transform: translateY(2px) !important;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6) !important;
+                transform: translateY(1px) scale(0.98) !important;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8) !important;
             }
             
-            /* Floating cow optimization for mobile */
-            .floating-cow {
-                width: 80px !important;
-                height: 80px !important;
-                bottom: 15% !important;
-                right: 5% !important;
-                z-index: 5 !important;
-                opacity: 0.9 !important;
-                filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8)) !important;
-                
-                /* GPU acceleration for smooth animation */
+            .cta-button:hover {
+                transform: translateY(-2px) !important;
+                box-shadow: 
+                    0 12px 35px rgba(0, 0, 0, 0.7),
+                    0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+            }
+            
+            /* Enhanced mobile button styling */
+            .cta-button.primary {
+                background: linear-gradient(135deg, #0038B8 0%, #004BE6 100%) !important;
+                border: 2px solid rgba(255, 255, 255, 0.1) !important;
+            }
+            
+            .cta-button.secondary {
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%) !important;
+                color: #0038B8 !important;
+                border: 2px solid rgba(0, 56, 184, 0.3) !important;
+            }
+            
+            .cta-button.social {
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%) !important;
+                color: #0038B8 !important;
+                border: 2px solid rgba(0, 56, 184, 0.3) !important;
+            }
+            
+            /* Mobile-specific animations */
+            @keyframes mobileSlideUp {
+                0% { 
+                    opacity: 0; 
+                    transform: translateY(30px);
+                }
+                100% { 
+                    opacity: 1; 
+                    transform: translateY(0);
+                }
+            }
+            
+            .hero-content {
+                animation: mobileSlideUp 0.8s ease-out !important;
+            }
+            
+            .cta-button {
+                animation: mobileSlideUp 0.8s ease-out !important;
+                animation-delay: 0.2s !important;
+                animation-fill-mode: both !important;
+            }
+            
+            
+            /* Mobile performance optimizations */
+            html {
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+            }
+            
+            /* GPU acceleration for smoother animations */
+            .hero-content,
+            .cta-button,
+            .floating-heifer {
                 will-change: transform;
                 transform: translateZ(0);
                 backface-visibility: hidden;
             }
             
-            /* Respect motion preferences */
-            @media (prefers-reduced-motion: reduce) {
-                .floating-cow {
-                    animation: none !important;
-                    transform: translateZ(0) !important;
-                }
+            /* Optimize touch scrolling */
+            body {
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
             }
             
-            /* Ensure proper text sizing */
-            html {
-                -webkit-text-size-adjust: 100%;
-                text-size-adjust: 100%;
+            /* Prevent mobile zoom on form elements */
+            input, select, textarea {
+                font-size: 16px !important;
+            }
+            
+            /* Improve mobile readability */
+            .hero-description {
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
             }
             
             body {
@@ -369,29 +320,38 @@
         @media (max-width: 480px) {
             .hero-content {
                 margin: 0;
-                padding: 1.5rem 1rem;
+                padding: 2rem 1.2rem;
                 border-radius: 0;
+                background: transparent;
+                backdrop-filter: none;
             }
             
             .hero-title {
-                font-size: clamp(1.5rem, 6vw, 2.8rem) !important;
+                font-size: clamp(1.6rem, 7vw, 3rem) !important;
+                margin-bottom: 0.8rem !important;
             }
             
             .hero-subtitle {
-                font-size: clamp(0.8rem, 3vw, 1.1rem) !important;
+                font-size: clamp(0.9rem, 3.5vw, 1.2rem) !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .hero-description {
+                font-size: 0.95rem !important;
+                margin-bottom: 1.8rem !important;
             }
             
             .cta-button {
-                max-width: 250px !important;
-                font-size: 0.9rem !important;
-                padding: 0.8rem 1.2rem !important;
+                max-width: 280px !important;
+                font-size: 1rem !important;
+                padding: 1rem 1.5rem !important;
+                min-height: 48px !important;
+                border-radius: 40px !important;
             }
             
-            .floating-cow {
-                width: 60px !important;
-                height: 60px !important;
-                bottom: 10% !important;
-                right: 3% !important;
+            .cta-buttons {
+                gap: 1rem !important;
+                margin-top: 1.5rem !important;
             }
         }
 
@@ -430,17 +390,20 @@
         .hero-content {
             text-align: center;
             z-index: 10;
+            background: transparent;
+            padding: 2rem 1rem;
+            margin: 0;
         }
 
         .hero-title {
             font-family: 'Orbitron', monospace;
             font-size: clamp(3rem, 8vw, 8rem);
             font-weight: 900;
-            color: var(--primary-red);
+            color: var(--white);
             text-shadow: 
-                0 0 20px rgba(255, 0, 0, 0.5),
-                0 0 40px rgba(255, 0, 0, 0.3),
-                0 0 60px rgba(255, 0, 0, 0.2);
+                0 0 20px rgba(0, 56, 184, 0.8),
+                0 0 40px rgba(0, 56, 184, 0.5),
+                2px 2px 4px rgba(0, 0, 0, 0.9);
             margin-bottom: 2rem;
             animation: titlePulse 3s ease-in-out infinite;
         }
@@ -454,15 +417,15 @@
             font-family: 'Rajdhani', sans-serif;
             font-size: clamp(1.5rem, 4vw, 3rem);
             font-weight: 300;
-            color: var(--gold);
+            color: var(--light-blue);
             margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            text-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
             animation: subtitleGlow 4s ease-in-out infinite alternate;
         }
 
         @keyframes subtitleGlow {
-            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
-            to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.2); }
+            from { text-shadow: 0 0 20px rgba(74, 144, 226, 0.3); }
+            to { text-shadow: 0 0 30px rgba(74, 144, 226, 0.6), 0 0 40px rgba(74, 144, 226, 0.2); }
         }
 
         .hero-description {
@@ -491,29 +454,31 @@
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background: linear-gradient(45deg, var(--primary-red), var(--secondary-red));
-            color: white;
+            background: var(--primary-blue);
+            color: var(--white);
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
-            border-radius: 50px;
+            border-radius: 8px;
+            border: 2px solid var(--primary-blue);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
-            animation: buttonFloat 6s ease-in-out infinite;
+            box-shadow: 0 4px 12px rgba(0, 56, 184, 0.3);
         }
 
         .cta-button.secondary {
-            background: linear-gradient(45deg, var(--gold), var(--dark-gold));
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
-            animation-delay: -3s;
+            background: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(0, 56, 184, 0.2);
         }
         
         .cta-button.social {
-            background: linear-gradient(45deg, #1da1f2, #0d8bd9);
-            box-shadow: 0 10px 30px rgba(29, 161, 242, 0.3);
-            animation-delay: -1.5s;
+            background: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(0, 56, 184, 0.2);
         }
 
         @keyframes buttonFloat {
@@ -538,15 +503,15 @@
 
         .cta-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 56, 184, 0.4);
         }
 
         .cta-button.secondary:hover {
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(74, 144, 226, 0.4);
         }
         
         .cta-button.social:hover {
-            box-shadow: 0 15px 40px rgba(29, 161, 242, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 56, 184, 0.5);
         }
 
         /* Stats Section */
@@ -562,15 +527,15 @@
             padding: 2rem;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
-            border: 1px solid rgba(255, 0, 0, 0.2);
+            border: 1px solid rgba(0, 56, 184, 0.2);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
         .stat-item:hover {
             transform: translateY(-10px);
-            border-color: var(--primary-red);
-            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+            border-color: var(--primary-blue);
+            box-shadow: 0 20px 40px rgba(0, 56, 184, 0.2);
         }
 
         .stat-number {
@@ -784,8 +749,9 @@
         /* Floating Red Heifer */
         .floating-heifer {
             position: fixed;
-            top: 20%;
-            right: 10%;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 300px;
             height: 300px;
             z-index: 50;
@@ -916,8 +882,19 @@
             .floating-heifer {
                 width: 200px;
                 height: 200px;
-                top: 15%;
-                right: 5%;
+                top: 12%;
+                left: 50%;
+                transform: translateX(-50%);
+                animation: heiferFloat 12s ease-in-out infinite;
+            }
+            
+            /* Optimize heifer animations for mobile */
+            .floating-heifer::before {
+                animation: heiferBackgroundGlow 8s ease-in-out infinite alternate;
+            }
+            
+            .heifer-image {
+                animation: heiferRotate 20s linear infinite, heiferGlow 6s ease-in-out infinite alternate;
             }
         }
 
@@ -925,8 +902,19 @@
             .floating-heifer {
                 width: 150px;
                 height: 150px;
-                top: 10%;
-                right: 5%;
+                top: 8%;
+                left: 50%;
+                transform: translateX(-50%);
+                animation: heiferFloat 15s ease-in-out infinite;
+            }
+            
+            /* Further optimize for small screens */
+            .floating-heifer::before {
+                animation: heiferBackgroundGlow 10s ease-in-out infinite alternate;
+            }
+            
+            .heifer-image {
+                animation: heiferRotate 25s linear infinite, heiferGlow 8s ease-in-out infinite alternate;
             }
         }
     </style>
@@ -934,108 +922,17 @@
 <body>
     <!-- Background Video -->
     <div class="video-background">
-        <iframe 
-            src="https://www.youtube.com/embed/g3uRc8WiSnQ?autoplay=1&mute=1&loop=1&playlist=g3uRc8WiSnQ&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=1&volume=0"
-            frameborder="0" 
-            allowfullscreen
-            allow="autoplay; encrypted-media"
-            class="background-video"
-            muted>
-        </iframe>
-        <div class="video-overlay"></div>
+        <div id="youtube-player" class="background-video"></div>
     </div>
-    
-    <!-- Background Animation -->
-    <div class="bg-animation"></div>
-    
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
 
-    <!-- Audio Element -->
-    <audio id="hava-nagila" loop preload="auto" autoplay>
+    <!-- Background Audio -->
+    <audio id="hava-nagila" loop preload="auto" autoplay muted>
         <source src="./assets/hava_nagila_remix.mp3" type="audio/mpeg">
-        <source src="assets/hava_nagila_remix.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
     </audio>
     
-    <script>
-        // Advanced autoplay with Web Audio API
-        let audioContext;
-        let audioBuffer;
-        let audioSource;
-        
-        async function initWebAudio() {
-            try {
-                // Create AudioContext
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                
-                // Resume AudioContext if suspended
-                if (audioContext.state === 'suspended') {
-                    await audioContext.resume();
-                }
-                
-                // Load and play audio
-                const response = await fetch('./assets/hava_nagila_remix.mp3');
-                const arrayBuffer = await response.arrayBuffer();
-                audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-                
-                playWebAudio();
-                console.log('🎵 Web Audio API: Audio playing!');
-            } catch (error) {
-                console.log('🎵 Web Audio API failed:', error);
-                fallbackToHTMLAudio();
-            }
-        }
-        
-        function playWebAudio() {
-            if (audioSource) {
-                audioSource.stop();
-            }
-            
-            audioSource = audioContext.createBufferSource();
-            audioSource.buffer = audioBuffer;
-            audioSource.loop = true;
-            
-            const gainNode = audioContext.createGain();
-            gainNode.gain.value = 0.9;
-            
-            audioSource.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            audioSource.start(0);
-        }
-        
-        function fallbackToHTMLAudio() {
-            const audioElement = document.getElementById('hava-nagila');
-            if (audioElement) {
-                audioElement.volume = 0.9;
-                audioElement.muted = true;
-                audioElement.play().then(() => {
-                    setTimeout(() => {
-                        audioElement.muted = false;
-                        console.log('🎵 HTML Audio: Unmuted and playing!');
-                    }, 100);
-                }).catch(err => {
-                    console.log('🎵 HTML Audio also failed');
-                });
-            }
-        }
-        
-        // Try immediately
-        initWebAudio();
-        
-        // Also try traditional method
-        setTimeout(() => {
-            const audioElement = document.getElementById('hava-nagila');
-            if (audioElement) {
-                audioElement.volume = 0.9;
-                audioElement.play().then(() => {
-                    console.log('🎵 Traditional method worked!');
-                }).catch(() => {
-                    console.log('🎵 Traditional method failed');
-                });
-            }
-        }, 100);
-    </script>
+    
+
+    
 
     <!-- Floating Red Heifer -->
     <div class="floating-heifer" id="floating-heifer">
@@ -1064,21 +961,58 @@
                 </div>
             </div>
             
-            <!-- Floating Red Heifer -->
-            <div class="floating-cow">
-                <img src="./assets/hef.png" alt="Red Heifer" />
-            </div>
-            
-            <!-- Mobile-specific cow for reliability -->
-            <div class="mobile-cow" style="display: none;">
-                <img src="./assets/hef.png" alt="Red Heifer" />
-            </div>
         </div>
     </section>
 
 
 
+    <!-- YouTube Iframe API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    
     <script>
+        let player;
+        
+        // YouTube API ready callback
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                height: '100%',
+                width: '100%',
+                videoId: 'g3uRc8WiSnQ',
+                playerVars: {
+                    'autoplay': 1,
+                    'mute': 1,
+                    'loop': 1,
+                    'playlist': 'g3uRc8WiSnQ',
+                    'controls': 0,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'modestbranding': 1,
+                    'iv_load_policy': 3,
+                    'disablekb': 1,
+                    'fs': 0,
+                    'cc_load_policy': 0,
+                    'playsinline': 1,
+                    'enablejsapi': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+        
+        function onPlayerReady(event) {
+            console.log('🎥 YouTube player ready');
+            event.target.mute();
+            event.target.playVideo();
+        }
+        
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                event.target.playVideo();
+            }
+        }
+        
         // $100 Bill Rain System
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
@@ -1196,7 +1130,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: rgba(0,0,0,0.05);
+                background: transparent;
                 z-index: 9999;
                 cursor: pointer;
                 display: flex;
@@ -1207,18 +1141,24 @@
             
             const clickText = document.createElement('div');
             clickText.style.cssText = `
-                background: rgba(255,0,0,0.15);
+                background: transparent;
                 color: white;
-                padding: 15px 30px;
-                border-radius: 25px;
+                padding: 0;
+                border-radius: 0;
                 font-family: 'Orbitron', monospace;
-                font-size: 1rem;
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(255,0,0,0.3);
-                text-shadow: 0 0 10px rgba(255,0,0,0.8);
+                font-size: 1.2rem;
+                font-weight: 400;
+                backdrop-filter: none;
+                border: none;
+                text-shadow: 
+                    0 0 20px rgba(255, 0, 0, 0.8),
+                    0 0 40px rgba(255, 0, 0, 0.5),
+                    2px 2px 4px rgba(0, 0, 0, 0.9);
                 animation: pulse 2s infinite;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
             `;
-            clickText.innerHTML = '🇮🇱 Click Here';
+            clickText.innerHTML = 'Click anywhere';
             
             clickOverlay.appendChild(clickText);
             document.body.appendChild(clickOverlay);
@@ -1337,26 +1277,7 @@
             } else {
                 console.log('📱 Mobile mode: Skipping resource-intensive effects');
                 
-                // Use mobile-specific cow for maximum reliability
-                setTimeout(() => {
-                    const mobileCow = document.querySelector('.mobile-cow');
-                    const desktopCow = document.querySelector('.floating-cow');
-                    
-                    // Hide desktop cow
-                    if (desktopCow) {
-                        desktopCow.style.display = 'none';
-                    }
-                    
-                    // Show and position mobile cow
-                    if (mobileCow) {
-                        mobileCow.style.display = 'block';
-                        mobileCow.style.visibility = 'visible';
-                        mobileCow.style.opacity = '1';
-                        console.log('🐄 Mobile-specific cow activated successfully');
-                    } else {
-                        console.log('⚠️ Mobile cow element not found');
-                    }
-                }, 50);
+                console.log('📱 Mobile mode: Using single floating heifer element');
             }
             
             initHeiferMovement();
