@@ -1007,11 +1007,35 @@
             .floating-heifer {
                 display: none !important;
             }
+            
+            /* Reposition CA to not block buttons on mobile */
+            .floating-ca {
+                bottom: 20px !important;
+                font-size: 0.7rem !important;
+                z-index: 100 !important;
+                max-width: 90vw !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                white-space: nowrap !important;
+            }
         }
 
         @media (max-width: 480px) {
             .floating-heifer {
                 display: none !important;
+            }
+            
+            /* Further adjust CA for small screens */
+            .floating-ca {
+                bottom: 10px !important;
+                font-size: 0.6rem !important;
+                left: 5px !important;
+                transform: none !important;
+                text-align: left !important;
+                max-width: calc(100vw - 10px) !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                white-space: nowrap !important;
             }
         }
     </style>
