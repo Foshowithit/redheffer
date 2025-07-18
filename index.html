@@ -231,17 +231,17 @@
             
             .background-video {
                 position: absolute !important;
-                top: 0 !important;
-                left: 0 !important;
+                top: 50% !important;
+                left: 50% !important;
                 width: 100vw !important;
                 height: 100vh !important;
+                /* Use transform to center and scale properly */
+                -webkit-transform: translate(-50%, -50%) scale(1.2) !important;
+                transform: translate(-50%, -50%) scale(1.2) !important;
+                /* Ensure video fills screen */
+                min-height: 120vh !important;
+                min-width: 120vw !important;
                 object-fit: cover !important;
-                /* Safari mobile video optimization */
-                -webkit-transform: none !important;
-                transform: none !important;
-                /* Ensure video is visible on mobile */
-                min-height: 100vh !important;
-                min-width: 100vw !important;
             }
             
             /* Fix YouTube iframe positioning on mobile */
@@ -252,6 +252,7 @@
                 width: 100% !important;
                 height: 100% !important;
                 border: none !important;
+                object-fit: cover !important;
             }
             
             
@@ -1080,11 +1081,9 @@
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             
-            const isMobile = window.innerWidth <= 768;
-            
             player = new YT.Player('youtube-player', {
-                height: isMobile ? window.innerHeight : '100%',
-                width: isMobile ? window.innerWidth : '100%',
+                height: '100%',
+                width: '100%',
                 videoId: 'g3uRc8WiSnQ',
                 playerVars: {
                     'autoplay': 0, // Disable autoplay for all mobile devices
@@ -1119,15 +1118,18 @@
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             const isMobile = window.innerWidth <= 768;
             
-            // Fix mobile video positioning
+            // Fix mobile video positioning and scaling
             if (isMobile) {
                 const playerElement = document.getElementById('youtube-player');
                 if (playerElement) {
                     playerElement.style.position = 'absolute';
-                    playerElement.style.top = '0';
-                    playerElement.style.left = '0';
-                    playerElement.style.width = '100vw';
-                    playerElement.style.height = '100vh';
+                    playerElement.style.top = '50%';
+                    playerElement.style.left = '50%';
+                    playerElement.style.width = '120vw';
+                    playerElement.style.height = '120vh';
+                    playerElement.style.transform = 'translate(-50%, -50%)';
+                    playerElement.style.minWidth = '120vw';
+                    playerElement.style.minHeight = '120vh';
                 }
             }
             
