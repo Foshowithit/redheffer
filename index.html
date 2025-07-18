@@ -230,15 +230,28 @@
             }
             
             .background-video {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
                 width: 100vw !important;
                 height: 100vh !important;
                 object-fit: cover !important;
                 /* Safari mobile video optimization */
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
+                -webkit-transform: none !important;
+                transform: none !important;
                 /* Ensure video is visible on mobile */
                 min-height: 100vh !important;
                 min-width: 100vw !important;
+            }
+            
+            /* Fix YouTube iframe positioning on mobile */
+            .background-video iframe {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                border: none !important;
             }
             
             
@@ -1067,9 +1080,11 @@
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             
+            const isMobile = window.innerWidth <= 768;
+            
             player = new YT.Player('youtube-player', {
-                height: '100%',
-                width: '100%',
+                height: isMobile ? window.innerHeight : '100%',
+                width: isMobile ? window.innerWidth : '100%',
                 videoId: 'g3uRc8WiSnQ',
                 playerVars: {
                     'autoplay': 0, // Disable autoplay for all mobile devices
@@ -1103,6 +1118,18 @@
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             const isMobile = window.innerWidth <= 768;
+            
+            // Fix mobile video positioning
+            if (isMobile) {
+                const playerElement = document.getElementById('youtube-player');
+                if (playerElement) {
+                    playerElement.style.position = 'absolute';
+                    playerElement.style.top = '0';
+                    playerElement.style.left = '0';
+                    playerElement.style.width = '100vw';
+                    playerElement.style.height = '100vh';
+                }
+            }
             
             if (isSafari || isIOS || isMobile) {
                 // Don't autoplay on Safari/iOS/mobile, wait for user interaction
