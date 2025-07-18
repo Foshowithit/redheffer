@@ -231,16 +231,18 @@
             
             .background-video {
                 position: absolute !important;
-                top: 50% !important;
-                left: 50% !important;
+                top: 0 !important;
+                left: 0 !important;
                 width: 100vw !important;
                 height: 100vh !important;
-                /* Use transform to center and scale properly */
-                -webkit-transform: translate(-50%, -50%) scale(1.2) !important;
-                transform: translate(-50%, -50%) scale(1.2) !important;
-                /* Ensure video fills screen */
-                min-height: 120vh !important;
-                min-width: 120vw !important;
+                /* Remove any transforms that might cause scaling issues */
+                -webkit-transform: none !important;
+                transform: none !important;
+                /* Force full coverage */
+                min-height: 100vh !important;
+                min-width: 100vw !important;
+                max-height: none !important;
+                max-width: none !important;
                 object-fit: cover !important;
             }
             
@@ -1142,18 +1144,32 @@
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             const isMobile = window.innerWidth <= 768;
             
-            // Fix mobile video positioning and scaling
+            // Fix mobile video positioning to fill entire screen
             if (isMobile) {
                 const playerElement = document.getElementById('youtube-player');
                 if (playerElement) {
                     playerElement.style.position = 'absolute';
-                    playerElement.style.top = '50%';
-                    playerElement.style.left = '50%';
-                    playerElement.style.width = '120vw';
-                    playerElement.style.height = '120vh';
-                    playerElement.style.transform = 'translate(-50%, -50%)';
-                    playerElement.style.minWidth = '120vw';
-                    playerElement.style.minHeight = '120vh';
+                    playerElement.style.top = '0';
+                    playerElement.style.left = '0';
+                    playerElement.style.width = '100vw';
+                    playerElement.style.height = '100vh';
+                    playerElement.style.transform = 'none';
+                    playerElement.style.minWidth = '100vw';
+                    playerElement.style.minHeight = '100vh';
+                    playerElement.style.maxWidth = 'none';
+                    playerElement.style.maxHeight = 'none';
+                    
+                    // Also style the iframe inside
+                    setTimeout(() => {
+                        const iframe = playerElement.querySelector('iframe');
+                        if (iframe) {
+                            iframe.style.width = '100vw';
+                            iframe.style.height = '100vh';
+                            iframe.style.position = 'absolute';
+                            iframe.style.top = '0';
+                            iframe.style.left = '0';
+                        }
+                    }, 1000);
                 }
             }
             
@@ -1296,57 +1312,14 @@
             });
         }
 
-        // Safari-optimized Audio Management
+        // Simplified Audio Management without overlay
         function initAudio() {
             // Detect Safari and iOS
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             
-            // Show a subtle click-to-play overlay since autoplay is blocked
-            const clickOverlay = document.createElement('div');
-            clickOverlay.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: transparent;
-                z-index: 9999;
-                cursor: pointer;
-                display: flex;
-                align-items: flex-end;
-                justify-content: center;
-                padding-bottom: 50px;
-            `;
-            
-            const clickText = document.createElement('div');
-            clickText.style.cssText = `
-                background: transparent;
-                color: white;
-                padding: 0;
-                border-radius: 0;
-                font-family: 'Exo 2', sans-serif;
-                font-size: 1.2rem;
-                font-weight: 600;
-                backdrop-filter: none;
-                border: none;
-                text-shadow: 
-                    0 0 20px rgba(0, 56, 184, 0.8),
-                    0 0 40px rgba(0, 56, 184, 0.5),
-                    2px 2px 4px rgba(0, 0, 0, 0.9);
-                animation: pulse 2s infinite;
-                letter-spacing: 0.02em;
-            `;
-            clickText.innerHTML = 'Click anywhere';
-            
-            clickOverlay.appendChild(clickText);
-            document.body.appendChild(clickOverlay);
-            
-            // Safari-optimized function to start all audio
+            // Simple function to start audio on user interaction
             function startAllAudio() {
-                // Remove overlay
-                clickOverlay.remove();
-                
                 // Start HTML Audio with Safari optimizations
                 const audio = document.getElementById('hava-nagila');
                 if (audio) {
@@ -1366,10 +1339,6 @@
                             console.log('🎵 HTML Audio started successfully!');
                         }).catch(error => {
                             console.log('🎵 Audio play failed:', error);
-                            // Fallback: try again after a delay
-                            setTimeout(() => {
-                                audio.play().catch(e => console.log('🎵 Audio retry failed:', e));
-                            }, 1000);
                         });
                     }
                 }
@@ -1387,22 +1356,11 @@
                 }
             }
             
-            // Click anywhere to start
-            clickOverlay.addEventListener('click', startAllAudio);
-            
-            // Also try on various events
+            // Try to start audio on first user interaction
             const events = ['click', 'touchstart', 'keydown'];
             events.forEach(event => {
                 document.addEventListener(event, startAllAudio, { once: true });
             });
-            
-            // Auto-fade overlay after 8 seconds
-            setTimeout(() => {
-                if (clickOverlay.parentNode) {
-                    clickText.style.opacity = '0.8';
-                    clickText.style.animation = 'pulse 3s infinite';
-                }
-            }, 8000);
         }
 
         // Floating Heifer Interactive Movement
