@@ -219,6 +219,8 @@
                 /* Safari mobile video fix */
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
+                /* Ensure background is visible even when video isn't playing */
+                background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%) !important;
             }
             
             .background-video {
@@ -228,6 +230,9 @@
                 /* Safari mobile video optimization */
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
+                /* Ensure video is visible on mobile */
+                min-height: 100vh !important;
+                min-width: 100vw !important;
             }
             
             
@@ -1089,7 +1094,7 @@
                 width: '100%',
                 videoId: 'g3uRc8WiSnQ',
                 playerVars: {
-                    'autoplay': isSafari || isIOS ? 0 : 1, // Safari blocks autoplay
+                    'autoplay': 0, // Disable autoplay for all mobile devices
                     'mute': 1,
                     'loop': 1,
                     'playlist': 'g3uRc8WiSnQ',
@@ -1116,16 +1121,30 @@
             console.log('🎥 YouTube player ready');
             event.target.mute();
             
-            // Safari-specific video handling
+            // Safari and mobile-specific video handling
             const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const isMobile = window.innerWidth <= 768;
             
-            if (isSafari || isIOS) {
-                // Don't autoplay on Safari/iOS, wait for user interaction
-                console.log('🎥 Safari/iOS detected - waiting for user interaction');
+            if (isSafari || isIOS || isMobile) {
+                // Don't autoplay on Safari/iOS/mobile, wait for user interaction
+                console.log('🎥 Safari/iOS/mobile detected - waiting for user interaction');
+                
+                // Try to play immediately for mobile (may work in some cases)
+                event.target.playVideo();
+                
+                // Add click listener as fallback
                 document.addEventListener('click', function startVideoOnClick() {
                     event.target.playVideo();
                     document.removeEventListener('click', startVideoOnClick);
+                    console.log('🎥 Video started by user interaction');
+                }, { once: true });
+                
+                // Add touch event for mobile
+                document.addEventListener('touchstart', function startVideoOnTouch() {
+                    event.target.playVideo();
+                    document.removeEventListener('touchstart', startVideoOnTouch);
+                    console.log('🎥 Video started by touch');
                 }, { once: true });
             } else {
                 event.target.playVideo();
